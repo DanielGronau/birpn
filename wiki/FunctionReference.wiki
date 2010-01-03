@@ -1,0 +1,45 @@
+#summary Function Reference
+
+= Function Reference =
+
+|| BIRPN Operation || String Representation || `BigInteger` Function || Description ||
+|| ABS || abs || abs() || absolute value ||
+|| AND || `&` || and(n) || bitwise and ||
+|| ANDNOT || `&~` || andNot(n) || bitwise and not ||
+|| BITCOUNT || bitCount || bitCount() || number of set bits ||
+|| BITLENGTH || bitLength || bitLength() || length of binary representation ||
+|| CLEARBIT || clearBit || clearBit(k) || set the k-th bit to 0 ||
+|| DEC || `--` || -none - || decrease number by one ||
+|| DIV || `/` || divide(n) || integer division ||
+|| DIVMOD || `/%` || divideAndRemainder(n) || division and remainder ||
+|| DUP || dup || -none- || duplicate top value on stack ||
+|| FACTORIAL || ! || -none- || factorial ||
+|| FIB || fib || -none- || fibonacci function ||
+|| FLIPBIT || flipBit || flipBit(k) || flips the k-th bit ||
+|| GCD || gcd || gdc(n) || greatest common divisor ||
+|| INC || `++` || -none- || increase number by one ||
+|| LEFT || left || shiftLeft(k) || shift bits left by k positions ||
+|| LOWESTBIT || lowestbit || getLowestBitSet() || the position of the lowest bit ||
+|| MAX || max || max(n) || maximum ||
+|| MIN || min || min(n) || minimum ||
+|| MINUS || `-` || subtract(n) || difference ||
+|| MOD || `%` || mod(n) || modulo ||
+|| MODINVERSE || modInverse || modInverse(n) || 1/this for module n ||
+|| MODPOW || `^%` || modPow(e, m) || (this^e) % m ||
+|| NEGATE || negate || negate || unary minus ||
+|| NEXTPRIME || netPrime || nextProbablePrime() || the next probable prime greater than this ||
+|| NOT || `~` || not() || bitwise not ||
+|| OR || `|` || or(n) || bitwise or ||
+|| PLUS || `+` || add(n) || sum ||
+|| POW || `^` || pow(k) || exponentation ||
+|| PRIMEOFBITLENGTH || primeOfBitLength || `BigInteger`.probablePrime(k, random) || probable prime of bit length k ||
+|| REMAINDER || remainder || remainder(n) || remainder of integer division ||
+|| RIGHT || right || shiftRight(k) || shift bits right by k positions ||
+|| SETBIT || setBit || setBit(k) || set the k-th bit ||
+|| SIGNUM || signum || signum() || 1,0,-1 for positive, zero, negative number ||
+|| SQUARE || `²` || -none- || this*this ||
+|| SWAP || swap || -none || swaps the top an second stack entry ||
+|| TIMES || `*` || multiply(n) || multiplication ||
+|| XOR || xor || xor(n) || bitwise xor ||
+
+The String representation is not case sensistive.
