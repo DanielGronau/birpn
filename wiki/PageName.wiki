@@ -1,8 +1,9 @@
 #summary One-sentence summary of this page.
+#labels functionreference
 
 = Function Reference =
 
-|| BIRPN Operation || String Representation || BigInteger Function || Description ||
+|| BIRPN Operation || String Representation || `BigInteger` Function || Description ||
 || ABS || abs || abs() || absolute value ||
 || AND || `&` || and(n) || bitwise and ||
 || ANDNOT || `&~` || andNot(n) || bitwise and not ||
@@ -32,7 +33,7 @@
 || OR || `|` || or(n) || bitwise or ||
 || PLUS || `+` || add(n) || sum ||
 || POW || `^` || pow(k) || exponentation ||
-|| PRIMEOFBITLENGTH || primeOfBitLength || BigInteger.probablePrime(k, random) || probable prime of bit length k ||
+|| PRIMEOFBITLENGTH || primeOfBitLength || `BigInteger`.probablePrime(k, random) || probable prime of bit length k ||
 || REMAINDER || remainder || remainder(n) || remainder of integer division ||
 || RIGHT || right || shiftRight(k) || shift bits right by k positions ||
 || SETBIT || setBit || setBit(k) || set the k-th bit ||
