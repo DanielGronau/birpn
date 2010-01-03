@@ -2,7 +2,7 @@
 
 = Function Reference =
 
-|| BIRPN Operation || String Representation || `BigInteger` Function || Description ||
+|| BIRPN Operator || String Representation || `BigInteger` Function || Description ||
 || ABS || abs || abs() || absolute value ||
 || AND || `&` || and(n) || bitwise and ||
 || ANDNOT || `&~` || andNot(n) || bitwise and not ||
