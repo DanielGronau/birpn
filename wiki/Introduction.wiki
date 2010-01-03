@@ -10,26 +10,26 @@ There are two ways to use BIRPN: With operators or with a String containing the 
 
 You call the static Method `_(Numbers ... n)`. Note that the operators (like PLUS oder FACTORIAL) are Numbers, too. You can use any number type, except Double, Float and `BigDecimal`. Some examples:
 || Calculation || Reverse Polish Notation || BIRPN call || 
-|| a - b || a b - || _(a, b, MINUS) || 
-|| 3 + (4*5) || 3 4 5 * + || _(3, 4, 5, TIMES, PLUS) ||
-|| (3+4) *5 || 3 4 + 5 * || _(3, 4, PLUS, 5, TIMES) ||
-|| 16! || 16 ! || _(16, FACTORIAL) || 
-|| fib(fib(5)) || 5 fib fib || _(5, FIB, FIB) ||
+|| `a - b` || `a b -` || `_(a, b, MINUS)` || 
+|| `3 + (4*5)` || `3 4 5 * +` || `_(3, 4, 5, TIMES, PLUS)` ||
+|| `(3+4) *5` || `3 4 + 5 *` || `_(3, 4, PLUS, 5, TIMES)` ||
+|| `16!` || `16 !` || `_(16, FACTORIAL)` || 
+|| `fib(fib(5))` || `5 fib fib` || `_(5, FIB, FIB)` ||
 
 = Parsed Style =
 
-You call the static Method `_(String s, Numbers ... args)`. You put the String representation of the operators on the stack, separated by whitespaces. Variables use a placeholder syntax similar to the printf notation, but with a $ prefix. $0 refers to args[0], $1 refers to args[1] etc. Some examples:
+You call the static Method `_(String s, Numbers ... args)`. You put the String representation of the operators on the stack, separated by whitespaces. Operators are not case sensitive. Variables use a placeholder syntax similar to the printf notation, but with a $ prefix. $0 refers to args[0], $1 refers to args[1] etc. Some examples:
 || Calculation || Reverse Polish Notation || Parsed BIRPN call || 
-|| a - b || a b - || _("$0 $1 -", a, b) || 
-|| 3 + (4*5) || 3 4 5 * + || _("3 4 5 * +") ||
-|| (3+4) *5 || 3 4 + 5 * || _("3 4 + 5 *") ||
-|| 16! || 16 ! || _("16 !") || 
-|| fib(fib(5)) || 5 fib fib || _("5 fib fib") ||
+|| `a - b` || `a b -` || `_("$0 $1 -", a, b)` || 
+|| `3 + (4*5)` || `3 4 5 * +` || `_("3 4 5 * +")` ||
+|| `(3+4) * 5` || `3 4 + 5 *` || `_("3 4 + 5 *")` ||
+|| `16!` || `16 !` || `_("16 !")` || 
+|| `fib(fib(5))` || `5 fib fib` || `_("5 fib fib")` ||
 
 In Parsed Style you can use hexadeximal numbers (starting with 0x) or binary numbers (starting with 0b):
 || Calculation || Reverse Polish Notation || Parsed BIRPN call || 
-|| FF! || FF ! || _("0xFF !") || 
-|| 1001(b)! || 1001(b)! || _("0b1001 !") || 
+|| `FF!` || `FF !` || `_("0xFF !")` || 
+|| `1001(b)!` || `1001(b)!` || `_("0b1001 !")` || 
 
 It is possible to substitute not only numbers but operators, too. The following example prints the results of 33+17, 33-17, 33*17, 33/17:
 {{{
