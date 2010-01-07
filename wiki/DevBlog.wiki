@@ -1,0 +1,6 @@
+#Development Blog
+
+
+= 2010-01-07 =
+
+Okay, the scope of this project is quite limited, but I'm working on the next release. I'll add some JUnit tests and maybe some useful functions. The biggest improvement will be, that I make BIRPN "pluggable", which means that you can add your own functions at runtime. 
