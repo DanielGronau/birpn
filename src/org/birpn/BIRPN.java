@@ -100,47 +100,47 @@ public class BIRPN {
             new HashMap<String, BigInteger>();
 
     static {
-        put(ABS, new Abs());
-        put(AND, new And());
-        put(ANDNOT, new AndNot());
-        put(BITCOUNT, new BitCount());
-        put(BITLENGTH, new BitLength());
-        put(CLEARBIT, new ClearBit());
-        put(DEC, new Dec());
-        put(DIV, new Div());
-        put(DIVMOD, new DivMod());
-        put(DUP, new Dup());
-        put(FACTORIAL, new Factorial());
-        put(FIB, new Fib());
-        put(FLIPBIT, new FlipBit());
-        put(GCD, new Gcd());
-        put(INC, new Inc());
-        put(LEFT, new Left());
-        put(LOWESTBIT, new LowestBit());
-        put(MAX, new Max());
-        put(MIN, new Min());
-        put(MINUS, new Minus());
-        put(MOD, new Mod());
-        put(MODINVERSE, new ModInverse());
-        put(MODPOW, new ModPow());
-        put(NEGATE, new Negate());
-        put(NEXTPRIME, new NextPrime());
-        put(NOT, new Not());
-        put(OR, new Or());
-        put(PLUS, new Plus());
-        put(POW, new Pow());
-        put(PRIMEOFBITLENGTH, new PrimeOfBitLength());
-        put(REMAINDER, new Remainder());
-        put(RIGHT, new Right());
-        put(SETBIT, new SetBit());
-        put(SIGNUM, new Signum());
-        put(SQUARE, new Square());
-        put(SWAP, new Swap());
-        put(TIMES, new Times());
-        put(XOR, new Xor());
+        registerOperation(ABS, new Abs());
+        registerOperation(AND, new And());
+        registerOperation(ANDNOT, new AndNot());
+        registerOperation(BITCOUNT, new BitCount());
+        registerOperation(BITLENGTH, new BitLength());
+        registerOperation(CLEARBIT, new ClearBit());
+        registerOperation(DEC, new Dec());
+        registerOperation(DIV, new Div());
+        registerOperation(DIVMOD, new DivMod());
+        registerOperation(DUP, new Dup());
+        registerOperation(FACTORIAL, new Factorial());
+        registerOperation(FIB, new Fib());
+        registerOperation(FLIPBIT, new FlipBit());
+        registerOperation(GCD, new Gcd());
+        registerOperation(INC, new Inc());
+        registerOperation(LEFT, new Left());
+        registerOperation(LOWESTBIT, new LowestBit());
+        registerOperation(MAX, new Max());
+        registerOperation(MIN, new Min());
+        registerOperation(MINUS, new Minus());
+        registerOperation(MOD, new Mod());
+        registerOperation(MODINVERSE, new ModInverse());
+        registerOperation(MODPOW, new ModPow());
+        registerOperation(NEGATE, new Negate());
+        registerOperation(NEXTPRIME, new NextPrime());
+        registerOperation(NOT, new Not());
+        registerOperation(OR, new Or());
+        registerOperation(PLUS, new Plus());
+        registerOperation(POW, new Pow());
+        registerOperation(PRIMEOFBITLENGTH, new PrimeOfBitLength());
+        registerOperation(REMAINDER, new Remainder());
+        registerOperation(RIGHT, new Right());
+        registerOperation(SETBIT, new SetBit());
+        registerOperation(SIGNUM, new Signum());
+        registerOperation(SQUARE, new Square());
+        registerOperation(SWAP, new Swap());
+        registerOperation(TIMES, new Times());
+        registerOperation(XOR, new Xor());
     }
 
-    private static void put(BigInteger bi, Op op) {
+    public static void registerOperation(BigInteger bi, Op op) {
         ops.put(bi, op);
         opNames.put(op.toString(), bi);
     }

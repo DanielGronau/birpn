@@ -17,7 +17,7 @@ public class Fib extends Function1 {
 
     private static BigInteger fib(BigInteger n) {
         if (n.signum() < 0) {
-            throw new IllegalArgumentException("Argument must be non-negative.");
+            throw new ArithmeticException("Argument must be non-negative.");
         }
         if(n.compareTo(BigInteger.ONE) <= 0) {
             return n;
