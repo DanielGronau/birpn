@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 import static org.birpn.BIRPN.*;
 import java.math.BigInteger;
+import java.util.List;
 
 /**
  *
@@ -37,6 +38,23 @@ public class OperatorTest {
     }
 
     @Test
+    public void andBool() {
+        assertEquals(true, is(TRUE, TRUE, AND));
+        assertEquals(false, is(TRUE, FALSE, AND));
+        assertEquals(false, is(FALSE, TRUE, AND));
+        assertEquals(false, is(FALSE, FALSE, AND));
+        assertEquals(true, is("true true &"));
+        assertEquals(false, is("true false &"));
+        assertEquals(false, is("false true &"));
+        assertEquals(false, is("false false &"));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void andMixed() {
+        _(7, TRUE, AND);
+    }
+
+    @Test
     public void andNot() {
         assertEquals(BigInteger.valueOf(7), _(7, 8, ANDNOT));
         assertEquals(BigInteger.valueOf(5), _(7, 10, ANDNOT));
@@ -46,6 +64,22 @@ public class OperatorTest {
         assertEquals(BigInteger.valueOf(1089), _("7493 6534 &~"));
     }
 
+    public void andNotBool() {
+        assertEquals(false, is(TRUE, TRUE, ANDNOT));
+        assertEquals(true, is(TRUE, FALSE, ANDNOT));
+        assertEquals(false, is(FALSE, TRUE, ANDNOT));
+        assertEquals(false, is(FALSE, FALSE, ANDNOT));
+        assertEquals(false, is("true true &~"));
+        assertEquals(true, is("true false &~"));
+        assertEquals(false, is("false true &~"));
+        assertEquals(false, is("false false &~"));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void andNotMixed() {
+        _(7, TRUE, ANDNOT);
+    }
+    
     @Test
     public void bitCount() {
         assertEquals(BigInteger.valueOf(3), _(7, BITCOUNT));
@@ -98,6 +132,10 @@ public class OperatorTest {
 
     @Test
     public void divMod() {
+        List<BigInteger> list = results(49, 10, DIVMOD);
+        assertEquals(BigInteger.valueOf(4), list.get(0));
+        assertEquals(BigInteger.valueOf(9), list.get(1));
+
         assertEquals(BigInteger.valueOf(5887), _(74937493, 6534, DIVMOD, MINUS));
         assertEquals(BigInteger.valueOf(5887), _("74937493 6534 /% -"));
     }
@@ -106,6 +144,14 @@ public class OperatorTest {
     public void dup() {
         assertEquals(BigInteger.valueOf(49), _(7, DUP, TIMES));
         assertEquals(BigInteger.valueOf(49), _("7 dup *"));
+    }
+
+    @Test
+    public void equals() {
+        assertEquals(TRUE, _(7, 7, EQ));
+        assertEquals(FALSE, _(7, 8, EQ));
+        assertEquals(TRUE, _("7 7 =="));
+        assertEquals(FALSE, _("7 8 =="));
     }
 
     @Test
@@ -124,23 +170,23 @@ public class OperatorTest {
         assertEquals(f100, _("100 !"));
     }
 
-     @Test(expected=ArithmeticException.class)
-     public void negativeFactorial() {
+    @Test(expected = ArithmeticException.class)
+    public void negativeFactorial() {
         _(-1, FACTORIAL);
-     }
+    }
 
-     @Test
-     public void fib() {
+    @Test
+    public void fib() {
         assertEquals(BigInteger.valueOf(0), _(0, FIB));
         assertEquals(BigInteger.valueOf(1), _(1, FIB));
         assertEquals(BigInteger.valueOf(39088169), _(38, FIB));
         assertEquals(BigInteger.valueOf(0), _("0 fib"));
         assertEquals(BigInteger.valueOf(1), _("1 fib"));
         assertEquals(BigInteger.valueOf(39088169), _("38 fib"));
-     }
+    }
 
-     @Test(expected=ArithmeticException.class)
-     public void negativeFib() {
+    @Test(expected = ArithmeticException.class)
+    public void negativeFib() {
         _(-1, FIB);
-     }
+    }
 }
