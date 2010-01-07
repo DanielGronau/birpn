@@ -13,5 +13,9 @@ import java.util.Stack;
  * @author Gronau
  */
 public interface Op {
+
     public void eval(Stack<BigInteger> input);
+
+    @Override public String toString();
+
 }
