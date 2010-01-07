@@ -11,15 +11,14 @@ import java.math.BigInteger;
  *
  * @author Gronau
  */
-public class Not extends Function1 {
+public class TestBit extends Function2 {
 
     @Override
     public BigInteger calc(BigInteger... args) {
-        return (testForBooleans(args))
-                ? fromBool(! toBool(args[0]))
-                : args[0].not();
+        return fromBool(args[1].testBit(args[0].intValue()));
     }
+
     @Override public String toString() {
-        return "~";
+        return "testbit";
     }
 }

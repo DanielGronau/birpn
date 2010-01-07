@@ -29,7 +29,7 @@ public class Main {
         for (int i = 0; i < p - 2; i++) {
             s = _(s, SQUARE, 2, MINUS, m, MOD);
         }
-        return s.equals(_(0));
+        return is(s, 0, EQ);
     }
 
     public static boolean lucasLehmerParsed(int p) {
@@ -38,7 +38,7 @@ public class Main {
         for (int i = 0; i < p - 2; i++) {
             s = _("$0 ² 2 - $1 %", s, m);
         }
-        return s.equals(_("0"));
+        return is("$0 0 ==", s);
     }
 
     public static void main(String[] args) {

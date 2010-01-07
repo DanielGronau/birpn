@@ -6,20 +6,20 @@
 package org.birpn.ops;
 
 import java.math.BigInteger;
+import static org.birpn.BIRPN.*;
 
 /**
  *
  * @author Gronau
  */
-public class Not extends Function1 {
+public class Gt extends Function2 {
 
     @Override
     public BigInteger calc(BigInteger... args) {
-        return (testForBooleans(args))
-                ? fromBool(! toBool(args[0]))
-                : args[0].not();
+        return args[1].compareTo(args[0]) > 0 ? TRUE : FALSE;
     }
+
     @Override public String toString() {
-        return "~";
+        return ">";
     }
 }

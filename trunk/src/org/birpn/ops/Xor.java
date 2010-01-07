@@ -15,7 +15,9 @@ public class Xor extends Function2 {
 
     @Override
     public BigInteger calc(BigInteger... args) {
-        return args[1].xor(args[0]);
+        return (testForBooleans(args))
+                ? fromBool(toBool(args[1]) ^ toBool(args[0]))
+                : args[1].xor(args[0]);
     }
     @Override public String toString() {
         return "xor";
