@@ -11,7 +11,7 @@ BigInteger s2 = _(1,2,3,4,5,fold(PLUS)); //meta-function
 BigInteger s3 = _("1 2 3 4 5 fold:+"); //meta-function parsed
 
 //decrease all numbers by one
-List<BigIntegeger> list0 = results(1,DEC,2,DEC,3,DEC,4,DEC,5); //old way
+List<BigIntegeger> list0 = results(1,DEC,2,DEC,3,DEC,4,DEC,5,DEC); //old way
 List<BigIntegeger> list1 = results("1 -- 2 -- 3 -- 4 -- 5 --"); //old way parsed
 List<BigIntegeger> list2 = results(1,2,3,4,5,foreach(DEC)); //meta-function
 List<BigIntegeger> list3 = results("1 2 3 4 5 foreach:--"); //meta-function parsed
