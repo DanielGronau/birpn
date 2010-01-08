@@ -36,7 +36,7 @@ public class Main {
         BigInteger s = _("4");
         BigInteger m = _("2 $0 ^ --", p);
         for (int i = 0; i < p - 2; i++) {
-            s = _("$0 Â² 2 - $1 %", s, m);
+            s = _("$0 ² 2 - $1 %", s, m);
         }
         return is("$0 0 ==", s);
     }

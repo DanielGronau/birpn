@@ -12,7 +12,7 @@ import java.util.Stack;
  *
  * @author Gronau
  */
-public class DivMod implements Op {
+public class DivMod extends Op {
 
   public void eval(Stack<BigInteger> input) {
       BigInteger a = input.pop();

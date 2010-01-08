@@ -12,7 +12,7 @@ import java.util.Stack;
  *
  * @author Gronau
  */
-public class Swap implements Op {
+public class Swap extends Op {
     public void eval(Stack<BigInteger> input) {
         BigInteger a = input.pop();
         BigInteger b = input.pop();

@@ -12,7 +12,7 @@ import java.util.Stack;
  *
  * @author Gronau
  */
-public class Dup implements Op {
+public class Dup extends Op {
 
     public void eval(Stack<BigInteger> input) {
         input.push(input.peek());
