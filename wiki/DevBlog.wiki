@@ -6,3 +6,20 @@
 Okay, the scope of this project is quite limited, but I'm working on the next release. I'll add some JUnit tests and maybe some useful functions. The biggest improvement will be, that I make BIRPN "pluggable", which means that you can add your own functions at runtime. 
 
 Today I had the idea to support boolean operations by having a TRUE and FALSE constant, and it seems to work quite well. I included a boolean evaluation function is(...), and a function results(...) which exposes the stack content (if you want to calculate several values at once, like BigInteger.divideAndRemainder does, or for debugging)
+
+= 2010-01-08 =
+
+I changed the internal structure of the project and introduced the function "if". Finally I came up with the meta-function concept, which allows you to parametrize functions with functions. I introduced the meta-functions fold and foreach. Here an example what you can do with it:
+{{{
+//add all elements on the stack
+BigInteger s0 = _(1,2,3,4,5,PLUS,PLUS,PLUS,PLUS); //old way
+BigInteger s1 = _("1 2 3 4 5 + + + +"); //old way parsed
+BigInteger s2 = _(1,2,3,4,5,fold(PLUS)); //meta-function
+BigInteger s3 = _("1 2 3 4 5 fold:+"); //meta-function parsed
+
+//decrease all numbers by one
+List<BigIntegeger> list0 = _(1,DEC,2,DEC,3,DEC,4,DEC,5); //old way
+List<BigIntegeger> list1 = _("1 -- 2 -- 3 -- 4 -- 5 --"); //old way parsed
+List<BigIntegeger> list0 = _(1,2,3,4,5,foreach(DEC)); //meta-function
+List<BigIntegeger> list1 = _("1 2 3 4 5 foreach:--"); //meta-function parsed
+}}}
