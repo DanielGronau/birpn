@@ -18,6 +18,6 @@ public class Square extends Function1 {
         return args[0].multiply(args[0]);
     }
     @Override public String toString() {
-        return "Â²";
+        return "²";
     }
 }

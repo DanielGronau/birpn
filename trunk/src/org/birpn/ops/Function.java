@@ -12,7 +12,7 @@ import static org.birpn.BIRPN.*;
  *
  * @author Gronau
  */
-public abstract class Function implements Op {
+public abstract class Function extends Op {
 
     public Function(int arity) {
         this.arity = arity;

@@ -12,10 +12,26 @@ import java.util.Stack;
  *
  * @author Gronau
  */
-public interface Op {
+public abstract class Op extends Number {
 
-    public void eval(Stack<BigInteger> input);
+  public int intValue() {
+    throw new UnsupportedOperationException();
+  }
 
-    @Override public String toString();
+  public long longValue() {
+    throw new UnsupportedOperationException();
+  }
+
+  public float floatValue() {
+    throw new UnsupportedOperationException();
+  }
+
+  public double doubleValue() {
+    throw new UnsupportedOperationException();
+  }
+
+  public abstract void eval(Stack<BigInteger> input);
+
+  @Override public abstract  String toString();
 
 }
