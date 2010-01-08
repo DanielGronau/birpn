@@ -2,7 +2,7 @@
 
 = 2010-01-08 =
 
-I changed the internal structure of the project and introduced the function "if". Finally I came up with the meta-function concept, which allows you to parametrize functions with functions. I introduced the meta-functions fold and foreach. Here an example what you can do with it:
+I changed the internal structure of the project and introduced the function "if". I came up with a funny concept called "meta-functions", which allows you to parametrize functions with functions. I introduced the meta-functions fold and foreach. Here an example what you can do with it:
 {{{
 //add all elements on the stack
 BigInteger s0 = _(1,2,3,4,5,PLUS,PLUS,PLUS,PLUS); //old way
