@@ -7,7 +7,7 @@ I added some more functions and meta-functions. E.g. to get all primes of the fo
 System.out.println(results("1 99 .. foreach:² 3 applyLeft:+ filter:isPrime"));
 //[7, 19, 67, 103, 199, 487, 787, 1447, 2503, 2707, 3847, 4099, 4903, 5479, 5779, 8467, 8839]
 }}}
-I think this is pretty cool. But before getting lost in feature-space, I'll try to focus on getting BIRPN-0.2 out, and to improve documentation. A lot of things are counter-intuitive, and currently it's not obvious to see why the calculation blows up, so improved error messages and logging are on my taks list too.
+I think this is pretty cool. But before getting lost in feature-space, I'll try to focus on getting BIRPN-0.2 out, and to improve documentation. A lot of things are counter-intuitive, and currently it's not obvious to see why the calculation blows up, so improved error messages and logging are on my taks list, too.
 
 = 2010-01-08 =
 
