@@ -11,7 +11,7 @@ import java.math.BigInteger;
  *
  * @author Gronau
  */
-public class IsPrime extends Function2 {
+public class IsPrime extends Function1 {
 
     @Override
     public BigInteger calc(BigInteger... args) {

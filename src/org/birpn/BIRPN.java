@@ -15,6 +15,8 @@ import java.util.Stack;
 import org.birpn.ops.Abs;
 import org.birpn.ops.And;
 import org.birpn.ops.AndNot;
+import org.birpn.ops.ApplyLeft;
+import org.birpn.ops.ApplyRight;
 import org.birpn.ops.BitCount;
 import org.birpn.ops.BitLength;
 import org.birpn.ops.ClearBit;
@@ -25,6 +27,8 @@ import org.birpn.ops.Dup;
 import org.birpn.ops.Eq;
 import org.birpn.ops.Factorial;
 import org.birpn.ops.Fib;
+import org.birpn.ops.Filter;
+import org.birpn.ops.FilterNot;
 import org.birpn.ops.FlipBit;
 import org.birpn.ops.FromBool;
 import org.birpn.ops.Gcd;
@@ -66,6 +70,8 @@ import org.birpn.ops.If;
 import org.birpn.ops.Fold;
 import org.birpn.ops.ForEach;
 import org.birpn.ops.Meta;
+import org.birpn.ops.Range;
+import org.birpn.ops.RangeBy;
 
 /**
  *
@@ -116,6 +122,8 @@ public class BIRPN {
   public static final Op PLUS = new Plus();
   public static final Op POW = new Pow();
   public static final Op PRIMEOFBITLENGTH = new PrimeOfBitLength();
+  public static final Op RANGE = new Range();
+  public static final Op RANGEBY = new RangeBy();
   public static final Op REMAINDER = new Remainder();
   public static final Op RIGHT = new Right();
   public static final Op SETBIT = new SetBit();
@@ -138,9 +146,10 @@ public class BIRPN {
                 GCD, GT, IF, INC, ISPRIME, ISPROBABLEPRIME, LE, LEFT, LT,
                 LOWESTBIT, MAX, MIN, MINUS, MOD, MODINVERSE, MODPOW, NE,
                 NEGATE, NEXTPRIME, NOT, OR, PLUS, POW, PRIMEOFBITLENGTH,
-                REMAINDER, RIGHT, SETBIT, SIGNUM, SQUARE, SWAP, TESTBIT,
-                TIMES, TOBOOL, XOR);
-    registerMetas(Fold.meta(), ForEach.meta());
+                RANGE, RANGEBY, REMAINDER, RIGHT, SETBIT, SIGNUM, SQUARE,
+                SWAP, TESTBIT, TIMES, TOBOOL, XOR);
+    registerMetas(ApplyLeft.meta(), ApplyRight.meta(), Filter.meta(),
+            FilterNot.meta(), Fold.meta(), ForEach.meta());
   }
 
   public static void registerOps(Op ...ops) {
@@ -159,13 +168,12 @@ public class BIRPN {
     /* do not instantiate */
   }
 
-  public static Op fold(Op op) {
-    return new Fold(op);
-  }
-
-  public static Op foreach(Op op) {
-    return new ForEach(op);
-  }
+  public static Op applyLeft(Op op) { return new ApplyLeft(op); }
+  public static Op applyRight(Op op) { return new ApplyRight(op); }
+  public static Op filter(Op op) { return new Filter(op); }
+  public static Op filterNot(Op op) { return new FilterNot(op); }
+  public static Op fold(Op op) { return new Fold(op); }
+  public static Op foreach(Op op) { return new ForEach(op); }
 
   public static List<BigInteger> results(Number ...elements) {
     Stack<BigInteger> stack = new Stack<BigInteger> ();
