@@ -2,7 +2,7 @@
 
 = 2010-01-09 =
 
-I added some more functions and meta-functions. E.g. to get all primes of the form p = n²+3, just write:
+I added some more functions and meta-functions. E.g. to get all primes of the form p = n²+3 below 10000, just write:
 {{{
 System.out.println(results("1 99 .. foreach:² 3 applyLeft:+ filter:isPrime"));
 //[7, 19, 67, 103, 199, 487, 787, 1447, 2503, 2707, 3847, 4099, 4903, 5479, 5779, 8467, 8839]
