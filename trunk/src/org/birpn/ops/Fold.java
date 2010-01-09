@@ -30,7 +30,7 @@ public class Fold extends Op {
   }
 
   @Override public String toString() {
-    return "fold" + fn.toString();
+    return "fold:" + fn.toString();
   }
 
   public static Meta meta() {

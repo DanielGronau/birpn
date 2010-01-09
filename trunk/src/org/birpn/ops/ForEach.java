@@ -35,7 +35,7 @@ public class ForEach extends Op {
   }
 
   public String toString() {
-    return "foreach" + fn.toString();
+    return "foreach:" + fn.toString();
   }
 
   public static Meta meta() {
