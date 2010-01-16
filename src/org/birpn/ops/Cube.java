@@ -6,20 +6,18 @@
 package org.birpn.ops;
 
 import java.math.BigInteger;
-import static org.birpn.BIRPN.*;
 
 /**
  *
  * @author Gronau
  */
-public class Ne extends Function2 {
+public class Cube extends Function1 {
 
     @Override
     public BigInteger calc(BigInteger... args) {
-        return args[1].equals(args[0]) ? FALSE : TRUE;
+        return args[0].pow(3);
     }
-
     @Override public String toString() {
-        return "!=";
+        return "³";
     }
 }
