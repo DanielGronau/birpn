@@ -79,7 +79,7 @@ public class OperatorTest {
     public void andNotMixed() {
         _(7, TRUE, ANDNOT);
     }
-    
+
     @Test
     public void bitCount() {
         assertEquals(BigInteger.valueOf(3), _(7, BITCOUNT));
@@ -111,6 +111,16 @@ public class OperatorTest {
     }
 
     @Test
+    public void cube() {
+        assertEquals(BigInteger.valueOf(125), _(5, CUBE));
+        assertEquals(BigInteger.valueOf(-125), _(-5, CUBE));
+        assertEquals(BigInteger.valueOf(0), _(0, CUBE));
+        assertEquals(BigInteger.valueOf(125), _("5 ³"));
+        assertEquals(BigInteger.valueOf(-125), _("-5 ³"));
+        assertEquals(BigInteger.valueOf(0), _("0 ³"));
+    }
+
+    @Test
     public void dec() {
         assertEquals(BigInteger.valueOf(-1), _(0, DEC));
         assertEquals(BigInteger.valueOf(6), _(7, DEC));
@@ -135,15 +145,21 @@ public class OperatorTest {
         List<BigInteger> list = results(49, 10, DIVMOD);
         assertEquals(BigInteger.valueOf(4), list.get(0));
         assertEquals(BigInteger.valueOf(9), list.get(1));
-
-        assertEquals(BigInteger.valueOf(5887), _(74937493, 6534, DIVMOD, MINUS));
-        assertEquals(BigInteger.valueOf(5887), _("74937493 6534 /% -"));
+        List<BigInteger> list1 = results("49 10 /%");
+        assertEquals(BigInteger.valueOf(4), list.get(0));
+        assertEquals(BigInteger.valueOf(9), list.get(1));
     }
 
     @Test
     public void dup() {
-        assertEquals(BigInteger.valueOf(49), _(7, DUP, TIMES));
-        assertEquals(BigInteger.valueOf(49), _("7 dup *"));
+        List<BigInteger> list = results(10, DUP);
+        assertEquals(2, list.size());
+        assertEquals(BigInteger.valueOf(10), list.get(0));
+        assertEquals(BigInteger.valueOf(10), list.get(1));
+        List<BigInteger> list1 = results("42 dup");
+        assertEquals(2, list1.size());
+        assertEquals(BigInteger.valueOf(42), list1.get(0));
+        assertEquals(BigInteger.valueOf(42), list1.get(1));
     }
 
     @Test
@@ -188,5 +204,149 @@ public class OperatorTest {
     @Test(expected = ArithmeticException.class)
     public void negativeFib() {
         _(-1, FIB);
+    }
+
+    @Test
+    public void filpBit() {
+        assertEquals(BigInteger.valueOf(3), _(7, 2, FLIPBIT));
+        assertEquals(BigInteger.valueOf(7), _(3, 2, FLIPBIT));
+        assertEquals(BigInteger.valueOf(7489), _(7493, 2, FLIPBIT));
+        assertEquals(BigInteger.valueOf(3), _("7 2 flipBit"));
+        assertEquals(BigInteger.valueOf(7), _("3 2 flipBit"));
+        assertEquals(BigInteger.valueOf(7489), _("7493 2 flipBit"));
+    }
+
+    @Test
+    public void fromBool() {
+        assertEquals(BigInteger.valueOf(0), _(FALSE, FROMBOOL));
+        assertEquals(BigInteger.valueOf(1), _(TRUE, FROMBOOL));
+        assertEquals(BigInteger.valueOf(0), _("false frombool"));
+        assertEquals(BigInteger.valueOf(1), _("true frombool"));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void fromBoolEx() {
+        _(3, FROMBOOL);
+    }
+
+    @Test
+    public void gcd() {
+        assertEquals(BigInteger.valueOf(13), _(1001, 169, GCD));
+        assertEquals(BigInteger.valueOf(13), _(-1001, 169, GCD));
+        assertEquals(BigInteger.valueOf(1), _(65537, 257, GCD));
+        assertEquals(BigInteger.valueOf(13), _("1001 169 gcd"));
+        assertEquals(BigInteger.valueOf(13), _("-1001 169 gcd"));
+        assertEquals(BigInteger.valueOf(1), _("65537 257 gcd"));
+    }
+
+    @Test
+    public void greaterEqual() {
+        assertEquals(true, is(1001, 1000, GE));
+        assertEquals(true, is(1000, 1000, GE));
+        assertEquals(false, is(999, 1000, GE));
+        assertEquals(true, is("1001 1000 >="));
+        assertEquals(true, is("1000 1000 >="));
+        assertEquals(false, is("999 1000 >="));
+    }
+
+    @Test
+    public void greater() {
+        assertEquals(true, is(1001, 1000, GT));
+        assertEquals(false, is(1000, 1000, GT));
+        assertEquals(false, is(999, 1000, GT));
+        assertEquals(true, is("1001 1000 >"));
+        assertEquals(false, is("1000 1000 >"));
+        assertEquals(false, is("999 1000 >"));
+    }
+
+    @Test
+    public void ifOperation() {
+        assertEquals(BigInteger.valueOf(42), _(TRUE, 42, 55, IF));
+        assertEquals(BigInteger.valueOf(55), _(FALSE, 42, 55, IF));
+        assertEquals(false, is(TRUE, FALSE, TRUE, IF));
+        assertEquals(BigInteger.valueOf(42), _("true 42 55 if"));
+        assertEquals(BigInteger.valueOf(55), _("false 42 55 if"));
+        assertEquals(false, is("true false true if"));
+    }
+
+    @Test
+    public void inc() {
+        assertEquals(BigInteger.valueOf(13), _(12, INC));
+        assertEquals(BigInteger.valueOf(0), _(-1, INC));
+        assertEquals(BigInteger.valueOf(-13), _(-14, INC));
+        assertEquals(BigInteger.valueOf(13), _("12 ++"));
+        assertEquals(BigInteger.valueOf(0), _("-1 ++"));
+        assertEquals(BigInteger.valueOf(-13), _("-14 ++"));
+    }
+
+    @Test
+    public void isPrime() {
+        assertEquals(false, is(1001, ISPRIME));
+        assertEquals(true, is(104729, ISPRIME));
+        assertEquals(false, is(-1047292, ISPRIME));
+        assertEquals(false, is("1001 isprime"));
+        assertEquals(true, is("104729 isprime"));
+        assertEquals(false, is("-1047292 isprime"));
+    }
+
+    @Test
+    public void isProbablePrime() {
+        assertEquals(false, is(1001, 5, ISPROBABLEPRIME));
+        assertEquals(true, is(104729, 10, ISPROBABLEPRIME));
+        assertEquals(false, is(-1047292, 5, ISPROBABLEPRIME));
+        assertEquals(false, is("1001 5 isprobableprime"));
+        assertEquals(true, is("104729 10 isprobableprime"));
+        assertEquals(false, is("-1047292 5 isprobableprime"));
+    }
+
+    @Test
+    public void isSquare() {
+        assertEquals(false, is(168, ISSQUARE));
+        assertEquals(true, is(169, ISSQUARE));
+        assertEquals(false, is(-171, ISSQUARE));
+        assertEquals(false, is(15241578750190520L, ISSQUARE));
+        assertEquals(true, is(15241578750190521L, ISSQUARE));
+        assertEquals(false, is(15241578750190522L, ISSQUARE));
+        assertEquals(false, is("168 issquare"));
+        assertEquals(true, is("169 issquare"));
+        assertEquals(false, is("-171 issquare"));
+    }
+
+    @Test
+    public void isqrt() {
+        assertEquals(BigInteger.valueOf(12), _(168, ISQRT));
+        assertEquals(BigInteger.valueOf(13), _(169, ISQRT));
+        assertEquals(BigInteger.valueOf(13), _(195, ISQRT));
+        assertEquals(BigInteger.valueOf(123456788), _(15241578750190520L, ISQRT));
+        assertEquals(BigInteger.valueOf(123456789), _(15241578750190521L, ISQRT));
+        assertEquals(BigInteger.valueOf(123456789), _(15241578750190529L, ISQRT));
+        assertEquals(BigInteger.valueOf(12), _("168 isqrt"));
+        assertEquals(BigInteger.valueOf(13), _("169 isqrt"));
+        assertEquals(BigInteger.valueOf(13), _("195 isqrt"));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void isqrtEx() {
+        _(-10, ISQRT);
+    }
+
+    @Test
+    public void lessOrEqual() {
+        assertEquals(false, is(1001, 1000, LE));
+        assertEquals(true, is(1000, 1000, LE));
+        assertEquals(true, is(999, 1000, LE));
+        assertEquals(false, is("1001 1000 <="));
+        assertEquals(true, is("1000 1000 <="));
+        assertEquals(true, is("999 1000 <="));
+    }
+
+    @Test
+    public void less() {
+        assertEquals(false, is(1001, 1000, LT));
+        assertEquals(false, is(1000, 1000, LT));
+        assertEquals(true, is(999, 1000, LT));
+        assertEquals(false, is("1001 1000 <"));
+        assertEquals(false, is("1000 1000 <"));
+        assertEquals(true, is("999 1000 <"));
     }
 }
