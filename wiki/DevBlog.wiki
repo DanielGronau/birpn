@@ -1,5 +1,9 @@
 #summary Development Blog
 
+= 2010-01-16 =
+
+I added three more functions. There was a little bug in ne (not equal), which shows that I should really complete the JUnit tests before making a new release. OperatorTest covers now about half of the functions. I'll make a MetaTest class for meta functions as well. A meta function page and a little "write your own function" tutorial in the wiki is missing as well.
+
 = 2010-01-09 =
 
 I added some more functions and meta-functions. E.g. to get all primes of the form p = n²+3 below 10000, just write:
