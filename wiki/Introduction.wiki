@@ -10,14 +10,15 @@ There are two ways to use BIRPN: With operators or with a String containing the 
 
 = Operator Style =
 
-You call the static Method `_(Numbers ... n)`. Note that the operators (like PLUS oder FACTORIAL) are Numbers, too. You can use any number type, except Double, Float and `BigDecimal`. Some examples:
+You call the static Method `_(Numbers ... n)`. Note that the operators (like PLUS oder FACTORIAL) are Numbers, too. You can use any number type, except Double, Float and `BigDecimal`. The boolean values are represented with the constants TRUE and FALSE.
+Some examples:
 || *Calculation* || *Reverse Polish Notation* || *BIRPN call* || 
 || `a - b` || `a b -` || `_(a, b, MINUS)` || 
 || `3 + (4*5)` || `3 4 5 * +` || `_(3, 4, 5, TIMES, PLUS)` ||
 || `(3+4) *5` || `3 4 + 5 *` || `_(3, 4, PLUS, 5, TIMES)` ||
 || `16!` || `16 !` || `_(16, FACTORIAL)` || 
 || `fib(fib(5))` || `5 fib fib` || `_(5, FIB, FIB)` ||
-
+|| `true ? 42 : 51` || `true 42 51 if` || `_(TRUE, 42, 51, IF)` ||
 
 
 = Parsed Style =
@@ -29,6 +30,7 @@ You call the static Method `_(String s, Numbers ... args)`. You put the String r
 || `(3+4) * 5` || `3 4 + 5 *` || `_("3 4 + 5 *")` ||
 || `16!` || `16 !` || `_("16 !")` || 
 || `fib(fib(5))` || `5 fib fib` || `_("5 fib fib")` ||
+|| `true ? 42 : 51` || `true 42 51 if` || `_("true 42 51 if")` ||
 
 In Parsed Style you can use hexadeximal numbers (starting with 0x) or binary numbers (starting with 0b):
 || *Calculation* || *Reverse Polish Notation* || *Parsed BIRPN call* || 
@@ -43,8 +45,13 @@ for(BigInteger op : ops) {
 }
 }}}
 
+= Stack Manipulation =
 
+At the moment there are only two stack operations: dup duplicates the first stack element and swap swaps the first and second argument. E.g you could calculate the fifth power using the expression {{{ BigInteger fifthPower = _(n, DUP, SQUARE, SQUARE, TIMES); }}}
 
+= Meta Functions =
+
+Sometimes you want to apply an operation on all elements of the stack. For this purpose there are six meta functions available, which take other functions as argument. See the meta function section in the FunctionReference.
 
 = Pros and Cons =
 
