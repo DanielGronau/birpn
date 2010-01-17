@@ -59,7 +59,9 @@
 || TOBOOL || tobool || -none- || converts 0 to false, all other numbers to true ||
 || XOR || xor || xor(n) || bitwise/logical xor ||
 
-The String representation is not case sensistive.
+Note: The String representation is *not* case sensistive.
+
+= Meta Functions =
 
 || *BIRPN Meta Function* || *String Representation* || *Description* ||
 || applyLeft(op) || applyleft:op || `[1,2,3,9] --> [9 op 1, 9 op 2, 9 op 3]` ||
