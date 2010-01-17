@@ -15,7 +15,7 @@ public class Square extends Function1 {
 
     @Override
     public BigInteger calc(BigInteger... args) {
-        return args[0].multiply(args[0]);
+        return args[0].pow(2);
     }
     @Override public String toString() {
         return "²";

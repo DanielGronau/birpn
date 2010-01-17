@@ -349,4 +349,361 @@ public class OperatorTest {
         assertEquals(false, is("1000 1000 <"));
         assertEquals(true, is("999 1000 <"));
     }
+
+    @Test
+    public void left() {
+        assertEquals(BigInteger.valueOf(1), _(3, -1, LEFT));
+        assertEquals(BigInteger.valueOf(3), _(3, 0, LEFT));
+        assertEquals(BigInteger.valueOf(12), _(3, 2, LEFT));
+        assertEquals(BigInteger.valueOf(1), _("3 -1 <<"));
+        assertEquals(BigInteger.valueOf(3), _("3 0 <<"));
+        assertEquals(BigInteger.valueOf(12), _("3 2 <<"));
+    }
+
+    @Test
+    public void lowestBit() {
+        assertEquals(BigInteger.valueOf(-1), _(0, LOWESTBIT));
+        assertEquals(BigInteger.valueOf(0), _(3, LOWESTBIT));
+        assertEquals(BigInteger.valueOf(2), _(12, LOWESTBIT));
+        assertEquals(BigInteger.valueOf(-1), _("0 lowestBit"));
+        assertEquals(BigInteger.valueOf(0), _("3 lowestBit"));
+        assertEquals(BigInteger.valueOf(2), _("12 lowestBit"));
+    }
+
+    @Test
+    public void max() {
+        assertEquals(BigInteger.valueOf(-1), _(-1, -100, MAX));
+        assertEquals(BigInteger.valueOf(1), _(-100, 1, MAX));
+        assertEquals(BigInteger.valueOf(0), _(0, 0, MAX));
+        assertEquals(BigInteger.valueOf(-1), _("-1 -100 max"));
+        assertEquals(BigInteger.valueOf(1), _("-100 1 max"));
+        assertEquals(BigInteger.valueOf(0), _("0 0 max"));
+    }
+
+    @Test
+    public void min() {
+        assertEquals(BigInteger.valueOf(-100), _(-1, -100, MIN));
+        assertEquals(BigInteger.valueOf(-100), _(-100, 1, MIN));
+        assertEquals(BigInteger.valueOf(0), _(0, 20, MIN));
+        assertEquals(BigInteger.valueOf(-100), _("-1 -100 min"));
+        assertEquals(BigInteger.valueOf(-100), _("-100 1 min"));
+        assertEquals(BigInteger.valueOf(0), _("0 20 min"));
+    }
+
+    @Test
+    public void minus() {
+        assertEquals(BigInteger.valueOf(0), _(-100, -100, MINUS));
+        assertEquals(BigInteger.valueOf(-100), _(0, 100, MINUS));
+        assertEquals(BigInteger.valueOf(22), _(42, 20, MINUS));
+        assertEquals(BigInteger.valueOf(0), _("-100 -100 -"));
+        assertEquals(BigInteger.valueOf(-100), _("0 100 -"));
+        assertEquals(BigInteger.valueOf(22), _("42 20 -"));
+    }
+
+    @Test
+    public void mod() {
+        assertEquals(BigInteger.valueOf(0), _(-100, 10, MOD));
+        assertEquals(BigInteger.valueOf(3), _(13, 5, MOD));
+        assertEquals(BigInteger.valueOf(2), _(-13, 5, MOD));
+        assertEquals(BigInteger.valueOf(0), _("-100 10 %"));
+        assertEquals(BigInteger.valueOf(3), _("13 5 %"));
+        assertEquals(BigInteger.valueOf(2), _("-13 5 %"));
+    }
+
+    @Test
+    public void modInverse() {
+        assertEquals(BigInteger.valueOf(2), _(3, 5, MODINVERSE));
+        assertEquals(BigInteger.valueOf(3), _(-3, 5, MODINVERSE));
+        assertEquals(BigInteger.valueOf(4), _(7, 27, MODINVERSE));
+        assertEquals(BigInteger.valueOf(2), _("3 5 modInverse"));
+        assertEquals(BigInteger.valueOf(3), _("-3 5 modInverse"));
+        assertEquals(BigInteger.valueOf(4), _("7 27 modInverse"));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void modInverseEx() {
+        _(12, 4, MODINVERSE);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void modInverseNegativeEx() {
+        _(5, -3, MODINVERSE);
+    }
+
+    @Test
+    public void modPow() {
+        assertEquals(BigInteger.valueOf(0), _(10, 5, 10, MODPOW));
+        assertEquals(BigInteger.valueOf(1), _(2, 100, 101, MODPOW));
+        assertEquals(BigInteger.valueOf(1), _(33, 65536, 65537, MODPOW));
+        assertEquals(BigInteger.valueOf(0), _("10 5 10 ^%"));
+        assertEquals(BigInteger.valueOf(1), _("2 100 101 ^%"));
+        assertEquals(BigInteger.valueOf(1), _("33 65536 65537 ^%"));
+    }
+
+    @Test
+    public void notEqual() {
+        assertEquals(FALSE, _(7, 7, NE));
+        assertEquals(TRUE, _(7, 8, NE));
+        assertEquals(FALSE, _("7 7 !="));
+        assertEquals(TRUE, _("7 8 !="));
+    }
+
+    @Test
+    public void negate() {
+        assertEquals(BigInteger.valueOf(-42), _(42, NEGATE));
+        assertEquals(BigInteger.valueOf(0), _(0, NEGATE));
+        assertEquals(BigInteger.valueOf(42), _(-42, NEGATE));
+        assertEquals(BigInteger.valueOf(-42), _("42 negate"));
+        assertEquals(BigInteger.valueOf(0), _("0 negate"));
+        assertEquals(BigInteger.valueOf(42), _("-42 negate"));
+    }
+
+    @Test
+    public void nextPrime() {
+        assertEquals(BigInteger.valueOf(2), _(0, NEXTPRIME));
+        assertEquals(BigInteger.valueOf(13), _(11, NEXTPRIME));
+        assertEquals(BigInteger.valueOf(257), _(256, NEXTPRIME));
+        assertEquals(BigInteger.valueOf(2), _("0 nextPrime"));
+        assertEquals(BigInteger.valueOf(13), _("11 nextPrime"));
+        assertEquals(BigInteger.valueOf(257), _("256 nextPrime"));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void nextPrimeNegativeEx() {
+        _(-3, NEXTPRIME);
+    }
+
+    @Test
+    public void not() {
+        assertEquals(FALSE, _(TRUE, NOT));
+        assertEquals(TRUE, _(FALSE, NOT));
+        assertEquals(FALSE, _("true ~"));
+        assertEquals(TRUE, _("false ~"));
+    }
+
+    @Test
+    public void or() {
+        assertEquals(BigInteger.valueOf(15), _(7, 9, OR));
+        assertEquals(BigInteger.valueOf(23), _(7, 16, OR));
+        assertEquals(BigInteger.valueOf(7623), _(7493, 6534, OR));
+        assertEquals(BigInteger.valueOf(15), _("7 9 |"));
+        assertEquals(BigInteger.valueOf(23), _("7 16 |"));
+        assertEquals(BigInteger.valueOf(7623), _("7493 6534 |"));
+    }
+
+    @Test
+    public void orBool() {
+        assertEquals(true, is(TRUE, TRUE, OR));
+        assertEquals(true, is(TRUE, FALSE, OR));
+        assertEquals(true, is(FALSE, TRUE, OR));
+        assertEquals(false, is(FALSE, FALSE, OR));
+        assertEquals(true, is("true true |"));
+        assertEquals(true, is("true false |"));
+        assertEquals(true, is("false true |"));
+        assertEquals(false, is("false false |"));
+    }
+
+    @Test
+    public void plus() {
+        assertEquals(BigInteger.valueOf(0), _(-100, 100, PLUS));
+        assertEquals(BigInteger.valueOf(100), _(0, 100, PLUS));
+        assertEquals(BigInteger.valueOf(62), _(42, 20, PLUS));
+        assertEquals(BigInteger.valueOf(0), _("-100 100 +"));
+        assertEquals(BigInteger.valueOf(100), _("0 100 +"));
+        assertEquals(BigInteger.valueOf(62), _("42 20 +"));
+    }
+
+    @Test
+    public void pow() {
+        assertEquals(BigInteger.valueOf(0), _(0, 100, POW));
+        assertEquals(BigInteger.valueOf(-27), _(-3, 3, POW));
+        assertEquals(BigInteger.valueOf(1024), _(4, 5, POW));
+        assertEquals(BigInteger.valueOf(0), _("0 100 ^"));
+        assertEquals(BigInteger.valueOf(-27), _("-3 3 ^"));
+        assertEquals(BigInteger.valueOf(1024), _("4 5 ^"));
+    }
+
+    @Test
+    public void pimeOfBitLength() {
+        BigInteger prime = _(20, PRIMEOFBITLENGTH);
+        assertEquals(true, prime.isProbablePrime(5));
+        assertEquals(20, prime.bitLength());
+        BigInteger prime1 = _("20 primeofbitlength");
+        assertEquals(true, prime1.isProbablePrime(5));
+        assertEquals(20, prime1.bitLength());
+    }
+
+    @Test
+    public void range() {
+        List<BigInteger> list = results(-1, 1, RANGE);
+        assertEquals(3, list.size());
+        assertEquals(-1, list.get(0).intValue());
+        assertEquals(0, list.get(1).intValue());
+        assertEquals(1, list.get(2).intValue());
+        List<BigInteger> list1 = results(1, -1, RANGE);
+        assertEquals(3, list1.size());
+        assertEquals(1, list1.get(0).intValue());
+        assertEquals(0, list1.get(1).intValue());
+        assertEquals(-1, list1.get(2).intValue());
+        List<BigInteger> list2 = results("9 12 ..");
+        assertEquals(4, list2.size());
+        assertEquals(9, list2.get(0).intValue());
+        assertEquals(10, list2.get(1).intValue());
+        assertEquals(11, list2.get(2).intValue());
+        assertEquals(12, list2.get(3).intValue());
+        List<BigInteger> list3 = results("42 42 ..");
+        assertEquals(1, list3.size());
+        assertEquals(42, list3.get(0).intValue());
+    }
+
+    @Test
+    public void rangeBy() {
+        List<BigInteger> list = results(-10, 10, 10, RANGEBY);
+        assertEquals(3, list.size());
+        assertEquals(-10, list.get(0).intValue());
+        assertEquals(0, list.get(1).intValue());
+        assertEquals(10, list.get(2).intValue());
+        List<BigInteger> list1 = results(10, -10, -10, RANGEBY);
+        assertEquals(list1.toString(), 3, list1.size());
+        assertEquals(10, list1.get(0).intValue());
+        assertEquals(0, list1.get(1).intValue());
+        assertEquals(-10, list1.get(2).intValue());
+        List<BigInteger> list2 = results("9 17 3 ...");
+        assertEquals(3, list2.size());
+        assertEquals(9, list2.get(0).intValue());
+        assertEquals(12, list2.get(1).intValue());
+        assertEquals(15, list2.get(2).intValue());
+        List<BigInteger> list3 = results("42 42 -5 ...");
+        assertEquals(1, list3.size());
+        assertEquals(42, list3.get(0).intValue());
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void rangeByZeroStepEx() {
+        results(42, 11, 0, RANGEBY);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void rangeByWrongSignEx() {
+        results(42, 11, 5, RANGEBY);
+    }
+
+    @Test
+    public void remainder() {
+        assertEquals(BigInteger.valueOf(0), _(-100, 10, REMAINDER));
+        assertEquals(BigInteger.valueOf(3), _(13, 5, REMAINDER));
+        assertEquals(BigInteger.valueOf(-3), _(-13, 5, REMAINDER));
+        assertEquals(BigInteger.valueOf(3), _(13, -5, REMAINDER));
+        assertEquals(BigInteger.valueOf(0), _("-100 10 remainder"));
+        assertEquals(BigInteger.valueOf(3), _("13 5 remainder"));
+        assertEquals(BigInteger.valueOf(-3), _("-13 5 remainder"));
+        assertEquals(BigInteger.valueOf(3), _("13 -5 remainder"));
+    }
+
+    @Test
+    public void right() {
+        assertEquals(BigInteger.valueOf(1), _(3, 1, RIGHT));
+        assertEquals(BigInteger.valueOf(3), _(3, 0, RIGHT));
+        assertEquals(BigInteger.valueOf(12), _(3, -2, RIGHT));
+        assertEquals(BigInteger.valueOf(1), _("3 1 >>"));
+        assertEquals(BigInteger.valueOf(3), _("3 0 >>"));
+        assertEquals(BigInteger.valueOf(12), _("3 -2 >>"));
+    }
+
+    @Test
+    public void setBit() {
+        assertEquals(BigInteger.valueOf(11), _(3, 3, SETBIT));
+        assertEquals(BigInteger.valueOf(19), _(17, 1, SETBIT));
+        assertEquals(BigInteger.valueOf(32), _(0, 5, SETBIT));
+        assertEquals(BigInteger.valueOf(11), _("3 3 setBit"));
+        assertEquals(BigInteger.valueOf(19), _("17 1 setBit"));
+        assertEquals(BigInteger.valueOf(32), _("0 5 setBit"));
+    }
+
+    @Test
+    public void signum() {
+        assertEquals(BigInteger.valueOf(-1), _(-18, SIGNUM));
+        assertEquals(BigInteger.valueOf(0), _(0, SIGNUM));
+        assertEquals(BigInteger.valueOf(1), _(42, SIGNUM));
+        assertEquals(BigInteger.valueOf(-1), _("-18 signum"));
+        assertEquals(BigInteger.valueOf(0), _("0 signum"));
+        assertEquals(BigInteger.valueOf(1), _("42 signum"));
+    }
+
+    @Test
+    public void square() {
+        assertEquals(BigInteger.valueOf(0), _(0, SQUARE));
+        assertEquals(BigInteger.valueOf(169), _(-13, SQUARE));
+        assertEquals(BigInteger.valueOf(65536), _(256, SQUARE));
+        assertEquals(BigInteger.valueOf(0), _("0 ²"));
+        assertEquals(BigInteger.valueOf(169), _("-13 ²"));
+        assertEquals(BigInteger.valueOf(65536), _("256 ²"));
+    }
+
+    @Test
+    public void swap() {
+        List<BigInteger> list = results(42, 53, SWAP);
+        assertEquals(2, list.size());
+        assertEquals(53, list.get(0).intValue());
+        assertEquals(42, list.get(1).intValue());
+        List<BigInteger> list1 = results("TRUE FALSE SWAP");
+        assertEquals(2, list1.size());
+        assertSame(FALSE, list1.get(0));
+        assertSame(TRUE, list1.get(1));
+    }
+
+    @Test
+    public void testBit() {
+        assertEquals(true, is(9, 0, TESTBIT));
+        assertEquals(false, is(9, 1, TESTBIT));
+        assertEquals(true, is(9, 3, TESTBIT));
+        assertEquals(true, is("9 0 testBit"));
+        assertEquals(false, is("9 1 testBit"));
+        assertEquals(true, is("9 3 testBit"));
+    }
+
+   @Test
+    public void times() {
+        assertEquals(BigInteger.valueOf(0), _(0, 4532, TIMES));
+        assertEquals(BigInteger.valueOf(12300), _(-123, -100, TIMES));
+        assertEquals(BigInteger.valueOf(65535), _(255, 257, TIMES));
+        assertEquals(BigInteger.valueOf(0), _("0 4532 *"));
+        assertEquals(BigInteger.valueOf(12300), _("-123 -100 *"));
+        assertEquals(BigInteger.valueOf(65535), _("255 257 *"));
+    }
+
+    @Test
+    public void toBool() {
+        assertEquals(true, is(1, TOBOOL));
+        assertEquals(true, is(42, TOBOOL));
+        assertEquals(false, is(0, TOBOOL));
+        assertEquals(true, is("1 toBool"));
+        assertEquals(true, is("-42 toBool"));
+        assertEquals(false, is("0 toBool"));
+    }
+
+    @Test
+    public void xor() {
+        assertEquals(BigInteger.valueOf(14), _(7, 9, XOR));
+        assertEquals(BigInteger.valueOf(0), _(7, 7, XOR));
+        assertEquals(BigInteger.valueOf(23), _(7, 16, XOR));
+        assertEquals(BigInteger.valueOf(1219), _(7493, 6534, XOR));
+        assertEquals(BigInteger.valueOf(14), _("7 9 xor"));
+        assertEquals(BigInteger.valueOf(0), _("7 7 xor"));
+        assertEquals(BigInteger.valueOf(23), _("7 16 xor"));
+        assertEquals(BigInteger.valueOf(1219), _("7493 6534 xor"));
+    }
+
+    @Test
+    public void xorBool() {
+        assertEquals(false, is(TRUE, TRUE, XOR));
+        assertEquals(true, is(TRUE, FALSE, XOR));
+        assertEquals(true, is(FALSE, TRUE, XOR));
+        assertEquals(false, is(FALSE, FALSE, XOR));
+        assertEquals(false, is("true true xor"));
+        assertEquals(true, is("true false xor"));
+        assertEquals(true, is("false true xor"));
+        assertEquals(false, is("false false xor"));
+    }
+
 }
