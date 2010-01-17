@@ -2,11 +2,11 @@
 
 = 2010-01-17 =
 
-I made a new release BIRPN 0.2. OperatorTest has now full operator coverage (which revealed some minor bugs in the process). I think it is time for a little feature freeze, until I got yesterday's promises fulfilled.
+I made a new release BIRPN 0.2. `OperatorTest` has now full operator coverage (which revealed some minor bugs in the process). I think it is time for a little feature freeze, until I got yesterday's promises fulfilled.
 
 = 2010-01-16 =
 
-I added three more functions. There was a little bug in ne (not equal), which shows that I should really complete the JUnit tests before making a new release. OperatorTest covers now about half of the functions. I'll make a MetaTest class for meta functions as well. A meta function page and a little "write your own function" tutorial in the wiki is missing as well.
+I added three more functions. There was a little bug in ne (not equal), which shows that I should really complete the JUnit tests before making a new release. `OperatorTest` covers now about half of the functions. I'll make a `MetaTest` class for meta functions as well. A meta function page and a little "write your own function" tutorial in the wiki is missing as well.
 
 = 2010-01-09 =
 
