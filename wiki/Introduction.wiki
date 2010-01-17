@@ -48,15 +48,15 @@ for(BigInteger op : ops) {
 
 = Result Types =
 
-So far all examples returned a single number, and for this purpose you can use the `_()` function. If there are more numbers on the stack as result of your calculation, you must use the results() funtion instead, as `_()` throws an error in this case. Sometimes the result of a calculation is a boolean constant (e.g. ISPRIME or TESTBIT). Of course you can use `_()` in this case as well, but it is more convenient to use the is() function, which returns a boolean. 
+So far all examples returned a single number, and for this purpose you can use the `_()` function. If there are more numbers on the stack as the result of your calculation, you must use the `results()` function instead, as `_()` throws an error in this case. Sometimes the result of a calculation is a boolean constant (e.g. ISPRIME or TESTBIT). Of course you can use `_()` in this case as well, but it is more convenient to use the `is()` function, which returns a boolean. 
 
 = Stack Manipulation =
 
-At the moment there are only two stack operations: dup duplicates the first stack element and swap swaps the first and second argument. E.g you could calculate the fifth power using the expression {{{ BigInteger fifthPower = _(n, DUP, SQUARE, SQUARE, TIMES); }}}. There are two additional functions generating ranges of numbers: range ("..") and rangeBy ("...").
+At the moment there are only two stack operations: `dup` duplicates the first stack element and `swap` swaps the first and second argument. E.g you could calculate the fifth power using the expression {{{ BigInteger fifthPower = _(n, DUP, SQUARE, SQUARE, TIMES); }}}. There are two additional functions generating ranges of numbers: range ("..") and rangeBy ("...").
 
 = Meta Functions =
 
-Sometimes you want to apply an operation on all elements of the stack. For this purpose there are six meta functions available, which take other functions as argument, e.g. {{{ results("1 20 .. filter:isPrime"); }}} returns all primes below 20. For more information go to the meta function section in the FunctionReference.
+Sometimes you want to apply an operation on all elements of the stack. For this purpose there are six meta functions available, which take other functions as argument, e.g. {{{ results("1 20 .. filter:isPrime"); }}} returns all prime numbers below 20. For more information go to the meta function section in the FunctionReference.
 
 = Pros and Cons =
 
