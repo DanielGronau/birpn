@@ -10,7 +10,7 @@
 || BITLENGTH || bitLength || bitLength() || length of binary representation ||
 || CLEARBIT || clearBit || clearBit(k) || set the k-th bit to 0 ||
 || CUBE || `³` || pow(3) || calculates the cube ||
-|| DEC || `--` || subtract(BigInteger.ONE) || decrease number by one ||
+|| DEC || `--` || subtract(`BigInteger.ONE`) || decrease number by one ||
 || DIV || `/` || divide(n) || integer division ||
 || DIVMOD || `/%` || divideAndRemainder(n) || division and remainder ||
 || DUP || dup || -none- || duplicate top value on stack ||
@@ -23,7 +23,7 @@
 || GE || `>=` || compareTo(x) >= 0 || greater or equal ||
 || GT || `>` || compareTo(x) > 0 || greater ||
 || IF || if || cond ? x : y || if statement ||
-|| INC || `++` || add(BigInteger.ONE) || increase number by one ||
+|| INC || `++` || add(`BigInteger.ONE`) || increase number by one ||
 || ISPRIME || isprime || isProbablePrime(15) || test if prime number ||
 || ISPROBABLEPRIME || isprobableprime || isProbablePrime || test if prime number ||
 || ISSQUARE || issquare || -none- || test if square number ||
@@ -60,3 +60,11 @@
 || XOR || xor || xor(n) || bitwise/logical xor ||
 
 The String representation is not case sensistive.
+
+|| *BIRPN Meta Function* || *String Representation* || *Description* ||
+|| applyLeft(op) || applyleft:op || [1,2,3,9] --> [9 op 1, 9 op 2, 9 op 3] ||
+|| applyRight(op) || applyright:op || [1,2,3,9] --> [1 op 9, 2 op 9, 3 op 9] ||
+|| filter(cond) || filter:cond || keep only elements fulfilling the condition ||
+|| filterNot(cond) || filternot:cond || keep only elements *not* fulfilling the condition ||
+|| fold(op) || fold:op || [1,2,3,4] --> [1 op (2 op (3 op 4))] ||
+|| foreach(op) || foreach:op || [1,2,3,4] --> [op(1), op(2), op(3), op(4)] ||
