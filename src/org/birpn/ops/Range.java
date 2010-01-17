@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.birpn.ops;
 
 import java.math.BigInteger;
@@ -18,13 +17,14 @@ public class Range extends Op {
     public void eval(Stack<BigInteger> input) {
         BigInteger toInt = input.pop();
         BigInteger fromInt = input.pop();
-        if(fromInt.equals(toInt)) {
-            throw new ArithmeticException("Lower and upper bound of Range are equal.");
-        }
-        BigInteger delta = fromInt.compareTo(toInt) < 0
-                ? BigInteger.ONE : BigInteger.ONE.negate();
-        for(BigInteger i = fromInt; i.compareTo(toInt) < 1; i = i.add(delta)) {
-            input.push(i);
+        if (fromInt.compareTo(toInt) <= 0) {
+            for (BigInteger i = fromInt; i.compareTo(toInt) < 1; i = i.add(BigInteger.ONE)) {
+                input.push(i);
+            }
+        } else {
+            for (BigInteger i = fromInt; i.compareTo(toInt) > -1; i = i.subtract(BigInteger.ONE)) {
+                input.push(i);
+            }
         }
     }
 
@@ -32,5 +32,4 @@ public class Range extends Op {
     public String toString() {
         return "..";
     }
-
 }

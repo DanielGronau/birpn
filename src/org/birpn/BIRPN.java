@@ -158,13 +158,25 @@ public class BIRPN {
 
     public static void registerOps(Op... ops) {
         for (Op op : ops) {
-            opNames.put(op.toString(), op);
+            Op other = opNames.put(op.toString(), op);
+            if (other != null) {
+                throw new IllegalArgumentException("Operation " +
+                        op.getClass().getSimpleName() + " and " +
+                        other.getClass().getSimpleName() +
+                        " use the same symbol '" + op.toString() + "'");
+            }
         }
     }
 
     public static void registerMetas(Meta... metas) {
         for (Meta meta : metas) {
-            metaNames.put(meta.toString(), meta);
+            Meta other = metaNames.put(meta.toString(), meta);
+            if (other != null) {
+                throw new IllegalArgumentException("Meta " +
+                        meta.getClass().getSimpleName() + " and " +
+                        other.getClass().getSimpleName() +
+                        " use the same symbol '" + meta.toString() + "'");
+            }
         }
     }
 
