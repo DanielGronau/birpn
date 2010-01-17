@@ -19,6 +19,7 @@ Some examples:
 || `16!` || `16 !` || `_(16, FACTORIAL)` || 
 || `fib(fib(5))` || `5 fib fib` || `_(5, FIB, FIB)` ||
 || `true ? 42 : 51` || `true 42 51 if` || `_(TRUE, 42, 51, IF)` ||
+_
 
 
 = Parsed Style =
@@ -47,7 +48,7 @@ for(BigInteger op : ops) {
 
 = Result Types =
 
-So far all examples returned a single number, and for this purpose you can use the _() function. If there are more numbers on the stack as result of your calculation, you must use the results() funtion instead, as _() throws an error in this case. Sometimes the result of a calculation is a boolean constant (e.g. ISPRIME or TESTBIT). Of course you can use _() in this case as well, but it is more convenient to use the is() function, which returns a boolean. 
+So far all examples returned a single number, and for this purpose you can use the `_()` function. If there are more numbers on the stack as result of your calculation, you must use the results() funtion instead, as `_()` throws an error in this case. Sometimes the result of a calculation is a boolean constant (e.g. ISPRIME or TESTBIT). Of course you can use `_()` in this case as well, but it is more convenient to use the is() function, which returns a boolean. 
 
 = Stack Manipulation =
 
