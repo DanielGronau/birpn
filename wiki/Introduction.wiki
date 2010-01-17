@@ -2,7 +2,7 @@
 
 = Introduction =
 
-First you need to understand what "Postfix Notation" or "Reverse Polish Notation" is. Look ist up at [http://en.wikipedia.org/wiki/Reverse_Polish_notation Wikipedia]. Note that you never need braces, just the the right order of numbers and operators. See the FunctionReference for supported functions. You need to include `static import org.birpn.BIRPN.*;` in your code. Of course you can mix the different styles as you like.
+First you need to understand what "Postfix Notation" or "Reverse Polish Notation" is. You can look it up at [http://en.wikipedia.org/wiki/Reverse_Polish_notation Wikipedia]. Note that you never need braces, just the the right order of numbers and operators. See the FunctionReference for supported functions. You need to include `static import org.birpn.BIRPN.*;` in your code. Of course you can mix the different styles as you like.
 
 There are two ways to use BIRPN: With operators or with a String containing the calculation. 
 
