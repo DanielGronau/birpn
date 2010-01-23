@@ -39,7 +39,7 @@ public class IsSquare extends Function1 {
 
     @Override
     public String toString() {
-        return "issquare";
+        return "isSquare";
     }
 
 }

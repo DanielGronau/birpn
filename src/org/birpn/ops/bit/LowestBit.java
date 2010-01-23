@@ -20,6 +20,6 @@ public class LowestBit extends Function1 {
     }
 
     @Override public String toString() {
-        return "lowestbit";
+        return "lowestBit";
     }
 }

@@ -19,6 +19,6 @@ public class SetBit extends Function2 {
         return args[1].setBit(args[0].intValue());
     }
     @Override public String toString() {
-        return "setbit";
+        return "setBit";
     }
 }

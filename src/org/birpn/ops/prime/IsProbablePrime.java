@@ -20,6 +20,6 @@ public class IsProbablePrime extends Function2 {
     }
 
     @Override public String toString() {
-        return "isprobableprime";
+        return "isProbablePrime";
     }
 }

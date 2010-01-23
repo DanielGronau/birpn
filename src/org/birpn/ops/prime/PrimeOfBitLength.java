@@ -22,6 +22,6 @@ public class PrimeOfBitLength extends Function1 {
     }
 
     @Override public String toString() {
-        return "primeofbitlength";
+        return "primeOfBitLength";
     }
 }

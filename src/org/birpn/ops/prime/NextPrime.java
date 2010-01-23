@@ -19,6 +19,6 @@ public class NextPrime extends Function1 {
         return args[0].nextProbablePrime();
     }
     @Override public String toString() {
-        return "nextprime";
+        return "nextPrime";
     }
 }

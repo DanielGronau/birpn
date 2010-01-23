@@ -38,7 +38,7 @@ public class ForEach extends Op {
   }
 
   public String toString() {
-    return "foreach:" + fn.toString();
+    return "forEach:" + fn.toString();
   }
 
   public static Meta meta() {
@@ -47,7 +47,7 @@ public class ForEach extends Op {
         return new ForEach(op);
       }
       @Override public String toString() {
-        return "foreach";
+        return "forEach";
       }
     };
   }

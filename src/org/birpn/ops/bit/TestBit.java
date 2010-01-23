@@ -20,6 +20,6 @@ public class TestBit extends Function2 {
     }
 
     @Override public String toString() {
-        return "testbit";
+        return "testBit";
     }
 }

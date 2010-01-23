@@ -4,7 +4,23 @@
  */
 package org.birpn;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import static org.birpn.BIRPN.*;
 
 /**
@@ -13,37 +29,120 @@ import static org.birpn.BIRPN.*;
  */
 public class Main {
 
-    //from http://en.literateprograms.org/Lucas-Lehmer_test_for_Mersenne_numbers_%28Java%29
-    public static boolean lucasLehmer(int p) {
-        BigInteger s = BigInteger.valueOf(4);
-        BigInteger m = BigInteger.valueOf(2).pow(p).subtract(BigInteger.ONE);
-        for (int i = 0; i < p - 2; i++) {
-            s = s.multiply(s).subtract(BigInteger.valueOf(2)).mod(m);
+    private final JTextArea area = new JTextArea(10, 50);
+    private List<String> undo = new ArrayList<String>();
+    private List<Op> ops;
+    private List<String> displayOps = new ArrayList<String>();
+    private List<Meta> metas;
+    private final Action functionAction = new AbstractAction("f(x)=") {
+        public void actionPerformed(ActionEvent e) {
+            JComboBox box = new JComboBox(displayOps.toArray());
+            int result = JOptionPane.showConfirmDialog(area.getParent(), box,
+                    "Select a Function", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION && box.getSelectedIndex() >= 0) {
+              area.insert(ops.get(box.getSelectedIndex()).toString() + " ",
+                      area.getCaretPosition());
+            }
         }
-        return s.equals(BigInteger.ZERO);
+    };
+    private final Action metaAction = new AbstractAction("meta(f(x))") {
+        public void actionPerformed(ActionEvent e) {
+            JComboBox box = new JComboBox(metas.toArray());
+            int result = JOptionPane.showConfirmDialog(area.getParent(), box,
+                    "Select a Meta-Function", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION && box.getSelectedIndex() >= 0) {
+              area.insert(box.getSelectedItem() + ":",  area.getCaretPosition());
+            }
+        }
+    };
+    private Action clearAction = new AbstractAction("Clear") {
+        public void actionPerformed(ActionEvent e) {
+            area.setText("");
+        }
+    };
+    private Action evalAction = new AbstractAction("Run") {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                String s = area.getText().replaceAll("\n", "");
+                List<BigInteger> list = results(s);
+                StringBuilder sb = new StringBuilder();
+                for(BigInteger bi : list) {
+                    if(bi == TRUE) {
+                        sb.append("true ");
+                    } else if(bi == FALSE) {
+                        sb.append("false ");
+                    } else {
+                        sb.append(bi).append(" ");
+                    }
+                }
+                undo.add(area.getText());
+                area.setText(sb.toString());
+            } catch(Exception ex) {
+                JOptionPane.showMessageDialog(area.getParent(),
+                        new JScrollPane(new JTextArea(ex.getMessage())),
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    };
+    private Action undoAction = new AbstractAction("Undo") {
+        public void actionPerformed(ActionEvent e) {
+            if(! undo.isEmpty()) {
+              area.setText(undo.remove(undo.size()-1));
+            }
+        }
+    };
+
+    public Main() {
+        initOps();
+        showFrame();
     }
 
-    public static boolean lucasLehmerBIRPN(int p) {
-        BigInteger s = _(4);
-        BigInteger m = _(2, p, POW, DEC);
-        for (int i = 0; i < p - 2; i++) {
-            s = _(s, SQUARE, 2, MINUS, m, MOD);
+    private void initOps() {
+        ops = getOperations();
+        Collections.sort(ops, new Comparator<Op>() {
+            public int compare(Op o1, Op o2) {
+                return o1.getClass().getSimpleName().compareTo(o2.getClass().getSimpleName());
+            }
+        });
+        displayOps = new ArrayList(ops.size());
+        for (Op op : ops) {
+            displayOps.add(op.getClass().getSimpleName() + ": " + op.toString());
         }
-        return is(s, 0, EQ);
+        metas = getMetas();
+        Collections.sort(metas, new Comparator<Meta>() {
+            public int compare(Meta m1, Meta m2) {
+                return m1.toString().compareTo(m2.toString());
+            }
+        });
     }
 
-    public static boolean lucasLehmerParsed(int p) {
-        BigInteger s = _("4");
-        BigInteger m = _("2 $0 ^ --", p);
-        for (int i = 0; i < p - 2; i++) {
-            s = _("$0 ² 2 - $1 %", s, m);
-        }
-        return is("$0 0 ==", s);
+    private void showFrame() {
+        area.setWrapStyleWord(true);
+        area.setLineWrap(true);
+        JFrame frame = new JFrame("BIRPN Calculator");
+        frame.setLocation(200, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(new JScrollPane(area));
+        frame.getContentPane().add(getButtons(), BorderLayout.SOUTH);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    private JComponent getButtons() {
+        Box box = Box.createHorizontalBox();
+        box.add(new JButton(functionAction));
+        box.add(Box.createHorizontalStrut(10));
+        box.add(new JButton(metaAction));
+        box.add(Box.createHorizontalStrut(10));
+        box.add(new JButton(clearAction));
+        box.add(Box.createHorizontalStrut(10));
+        box.add(new JButton(undoAction));
+        box.add(Box.createHorizontalGlue());
+        box.add(new JButton(evalAction));
+        return box;
     }
 
     public static void main(String[] args) {
-        System.out.println(lucasLehmer(107) + " " + lucasLehmer(109));
-        System.out.println(lucasLehmerBIRPN(107) + " " + lucasLehmerBIRPN(109));
-        System.out.println(lucasLehmerParsed(107) + " " + lucasLehmerParsed(109));
+        new Main();
     }
 }

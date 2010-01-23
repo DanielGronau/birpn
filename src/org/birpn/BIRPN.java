@@ -6,6 +6,7 @@ package org.birpn;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -156,7 +157,7 @@ public class BIRPN {
 
     public static void registerOps(Op... ops) {
         for (Op op : ops) {
-            Op other = opNames.put(op.toString(), op);
+            Op other = opNames.put(op.toString().toLowerCase(), op);
             if (other != null) {
                 throw new IllegalArgumentException("Operation " +
                         op.getClass().getSimpleName() + " and " +
@@ -168,7 +169,7 @@ public class BIRPN {
 
     public static void registerMetas(Meta... metas) {
         for (Meta meta : metas) {
-            Meta other = metaNames.put(meta.toString(), meta);
+            Meta other = metaNames.put(meta.toString().toLowerCase(), meta);
             if (other != null) {
                 throw new IllegalArgumentException("Meta " +
                         meta.getClass().getSimpleName() + " and " +
@@ -313,5 +314,13 @@ public class BIRPN {
         }
         return n instanceof BigInteger ? (BigInteger) n
                 : BigInteger.valueOf(n.longValue());
+    }
+
+    public static List<Op> getOperations() {
+        return new ArrayList(opNames.values());
+    }
+
+    public static List<Meta> getMetas() {
+        return new ArrayList(metaNames.values());
     }
 }

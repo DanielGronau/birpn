@@ -20,6 +20,6 @@ public class IsPrime extends Function1 {
     }
 
     @Override public String toString() {
-        return "isprime";
+        return "isPrime";
     }
 }

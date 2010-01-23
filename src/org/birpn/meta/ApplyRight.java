@@ -33,7 +33,7 @@ public class ApplyRight extends Op {
   }
 
   public String toString() {
-    return "applyright:" + fn.toString();
+    return "applyRight:" + fn.toString();
   }
 
   public static Meta meta() {
@@ -42,7 +42,7 @@ public class ApplyRight extends Op {
         return new ApplyRight(op);
       }
       @Override public String toString() {
-        return "applyright";
+        return "applyRight";
       }
     };
   }
