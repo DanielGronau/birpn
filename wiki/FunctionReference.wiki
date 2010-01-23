@@ -18,15 +18,15 @@
 || FACTORIAL || ! || -none- || factorial ||
 || FIB || fib || -none- || fibonacci function ||
 || FLIPBIT || flipBit || flipBit(k) || flips the k-th bit ||
-|| FROMBOOL || frombool || -none- || true -> 1 and false -> 0 ||
+|| FROMBOOL || fromBool || -none- || true -> 1 and false -> 0 ||
 || GCD || gcd || gdc(n) || greatest common divisor ||
 || GE || `>=` || compareTo(x) >= 0 || greater or equal ||
 || GT || `>` || compareTo(x) > 0 || greater ||
 || IF || if || cond ? x : y || if statement ||
 || INC || `++` || add(`BigInteger.ONE`) || increase number by one ||
-|| ISPRIME || isprime || isProbablePrime(15) || test if prime number ||
-|| ISPROBABLEPRIME || isprobableprime || isProbablePrime || test if prime number ||
-|| ISSQUARE || issquare || -none- || test if square number ||
+|| ISPRIME || isPrime || isProbablePrime(15) || test if prime number ||
+|| ISPROBABLEPRIME || isProbablePrime || isProbablePrime || test if prime number ||
+|| ISSQUARE || isSquare || -none- || test if square number ||
 || ISQRT || isqrt || -none- || biggest number x with x*x <= n ||
 || LE || `<=` || compareTo(x) <= 0 || less or equal ||
 || LEFT || `<<` || shiftLeft(k) || shift bits left by k positions ||
@@ -40,7 +40,7 @@
 || MODPOW || `^%` || modPow(e, m) || (this^e) % m ||
 || NE || `!=` || compareTo(x) != 0 || not equal ||
 || NEGATE || negate || negate || unary minus ||
-|| NEXTPRIME || netPrime || nextProbablePrime() || the next probable prime greater than this ||
+|| NEXTPRIME || nextPrime || nextProbablePrime() || the next probable prime greater than this ||
 || NOT || `~` || not() || bitwise/logical not ||
 || OR || `|` || or(n) || bitwise/logical or ||
 || PLUS || `+` || add(n) || sum ||
@@ -50,13 +50,13 @@
 || RANGEBY || `...` || -none- || range with given step ||
 || REMAINDER || remainder || remainder(n) || remainder of integer division ||
 || RIGHT || `>>` || shiftRight(k) || shift bits right by k positions ||
-|| SETBIT || setbit || setBit(k) || set the k-th bit ||
+|| SETBIT || setBit || setBit(k) || set the k-th bit ||
 || SIGNUM || signum || signum() || 1,0,-1 for positive, zero, negative number ||
 || SQUARE || `²` || pow(2) || calculates the square ||
 || SWAP || swap || -none- || swaps the top an second stack entry ||
-|| TESTBIT || testbit || testBit(k) || tests if k-th bit is set ||
+|| TESTBIT || testBit || testBit(k) || tests if k-th bit is set ||
 || TIMES || `*` || multiply(n) || multiplication ||
-|| TOBOOL || tobool || -none- || converts 0 to false, all other numbers to true ||
+|| TOBOOL || toBool || -none- || converts 0 to false, all other numbers to true ||
 || XOR || xor || xor(n) || bitwise/logical xor ||
 
 Note: The String representation is *not* case sensistive.
@@ -64,9 +64,9 @@ Note: The String representation is *not* case sensistive.
 = Meta Functions =
 
 || *BIRPN Meta Function* || *String Representation* || *Description* ||
-|| applyLeft(op) || applyleft:op || `[1,2,3,9] --> [9 op 1, 9 op 2, 9 op 3]` ||
-|| applyRight(op) || applyright:op || `[1,2,3,9] --> [1 op 9, 2 op 9, 3 op 9]` ||
+|| applyLeft(op) || applyLeft:op || `[1,2,3,9] --> [9 op 1, 9 op 2, 9 op 3]` ||
+|| applyRight(op) || applyrRght:op || `[1,2,3,9] --> [1 op 9, 2 op 9, 3 op 9]` ||
 || filter(cond) || filter:cond || keep only elements fulfilling the condition ||
-|| filterNot(cond) || filternot:cond || keep only elements *not* fulfilling the condition ||
+|| filterNot(cond) || filterNot:cond || keep only elements *not* fulfilling the condition ||
 || fold(op) || fold:op || `[1,2,3,4] --> [1 op (2 op (3 op 4))]` ||
-|| foreach(op) || foreach:op || `[1,2,3,4] --> [op(1), op(2), op(3), op(4)]` ||
+|| foreach(op) || forEach:op || `[1,2,3,4] --> [op(1), op(2), op(3), op(4)]` ||
