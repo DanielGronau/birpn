@@ -11,7 +11,9 @@ You must just provide the calc- and the toString-Method. Here is a possible impl
 {{{
 package mypackage;
 
-import org.birpn.Function2;
+//Some classes moved in the current sources,
+//so in BIRPN0.2.jar, you must use import org.birpn.ops.Function2; instead
+import org.birpn.Function2; 
 import java.math.BigInteger;
 
 public class Lcd extends Function2 {
