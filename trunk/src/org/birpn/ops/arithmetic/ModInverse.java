@@ -20,6 +20,6 @@ public class ModInverse extends Function2 {
     }
 
     @Override public String toString() {
-        return "modinverse";
+        return "modInverse";
     }
 }

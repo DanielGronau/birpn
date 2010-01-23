@@ -19,6 +19,6 @@ public class BitLength extends Function1 {
         return BigInteger.valueOf(args[0].bitLength());
     }
     @Override public String toString() {
-        return "bitlength";
+        return "bitLength";
     }
 }

@@ -18,6 +18,6 @@ public class BitCount extends Function1 {
         return BigInteger.valueOf(args[0].bitCount());
     }
     @Override public String toString() {
-        return "bitcount";
+        return "bitCount";
     }
 }

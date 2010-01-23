@@ -20,6 +20,6 @@ public class ClearBit extends Function2 {
     }
 
     @Override public String toString() {
-        return "clearbit";
+        return "clearBit";
     }
 }

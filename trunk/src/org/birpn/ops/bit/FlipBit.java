@@ -20,6 +20,6 @@ public class FlipBit extends Function2 {
     }
 
     @Override public String toString() {
-        return "flipbit";
+        return "flipBit";
     }
 }

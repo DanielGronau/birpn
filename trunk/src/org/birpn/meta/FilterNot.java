@@ -34,7 +34,7 @@ public class FilterNot extends Op {
   }
 
   public String toString() {
-    return "filternot:" + fn.toString();
+    return "filterNot:" + fn.toString();
   }
 
   public static Meta meta() {
@@ -43,7 +43,7 @@ public class FilterNot extends Op {
         return new FilterNot(op);
       }
       @Override public String toString() {
-        return "filternot";
+        return "filterNot";
       }
     };
   }

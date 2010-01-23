@@ -20,6 +20,6 @@ public class ToBool extends Function1 {
     }
 
     @Override public String toString() {
-        return "tobool";
+        return "toBool";
     }
 }
