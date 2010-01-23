@@ -2,6 +2,8 @@
 
 = Function Reference =
 
+The String representations are *not* case sensistive.
+
 || *BIRPN Operator* || *String Representation* || *`BigInteger` Function* || *Description* ||
 || ABS || abs || abs() || absolute value ||
 || AND || `&` || and(n) || bitwise/logical and ||
@@ -58,8 +60,6 @@
 || TIMES || `*` || multiply(n) || multiplication ||
 || TOBOOL || toBool || -none- || converts 0 to false, all other numbers to true ||
 || XOR || xor || xor(n) || bitwise/logical xor ||
-
-Note: The String representation is *not* case sensistive.
 
 = Meta Functions =
 
