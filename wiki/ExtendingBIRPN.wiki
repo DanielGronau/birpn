@@ -4,7 +4,7 @@
 
 While the basic class for an operation is Op, most of the operations in BIRPN are actually functions, which means that they remove their operands from the stack and put *one* `BigInteger` back to the stack. In this case you should use one of the function classes as your base class.
 
-Consider you want to write a function for the least common denominator. You can calculate it by the formula lcd(a,b) = a*b/gcd(a,b). It needs two arguments, so you can extend Function2. Note that you get the arguments in reverse order, so args[0] is the last argument, args[1] is the second to top one etc. 
+Consider you want to write a function for the least common denominator. You can calculate it by the formula lcd(a,b) = a*b/gcd(a,b). It needs two arguments, so you can extend Function2. Note that you get the arguments in reverse order, so `args[0]` is the last argument, `args[1]` is the second to last one etc. 
 
 You must just provide the calc- and the toString-Method. Here is a possible implementation:
 
