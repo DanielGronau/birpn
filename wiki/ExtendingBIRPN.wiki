@@ -1,4 +1,4 @@
-#Extending BIRPN with your own functions
+#summary Extending BIRPN with your own functions
 
 = Writing Functions =
 
