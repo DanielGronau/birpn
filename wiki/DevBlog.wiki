@@ -1,5 +1,9 @@
 #summary Development Blog
 
+= 2010-02-04 =
+
+I changed the Function1,2,3 interfaces to be more readable, `OperatorTest` is now backward compatible to `JUnit3`, and I changed the representation for square and cube to the corresponding Unicode escape sequences (as I had some checkin problems because of that). Hmmm, seems to be time for a new release.
+
 = 2010-01-23 =
 
 I completely reorganized the package structure: Classes to be extended by users (Op, Meta, Function...) are now direcly in org.birpn, the meta functions got their own package org.birpn.meta, and the ops package got splitted into several sub-packages. There is a new org.birpn.example package too, containing right now only the old example of the Lucas-Lehmer test from the Main class. The Main class itself is now a little bit more useful, as it acts like a little calculator. I found out that the all-lowercase toString() values of my Ops really suck, so I changed them to lowerCamelCase, which allows the calculator to show e.g. "isProbablePrime" instead of "isprobableprime" in the function reference. Last little change: I added two methods to get a list of all Ops and Metas registered in BIRPN.
