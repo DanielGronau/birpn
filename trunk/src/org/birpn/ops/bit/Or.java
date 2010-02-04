@@ -15,10 +15,10 @@ import java.math.BigInteger;
 public class Or extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return (testForBooleans(args))
-                ? fromBool(toBool(args[1]) || toBool(args[0]))
-                : args[1].or(args[0]);
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return (testForBooleans(x, y))
+                ? fromBool(toBool(x) || toBool(y))
+                : x.or(y);
     }
 
     @Override public String toString() {

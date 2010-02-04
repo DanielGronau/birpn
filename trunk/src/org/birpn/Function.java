@@ -24,8 +24,8 @@ public abstract class Function extends Op {
         for (int i = 0; i < arity; i++) {
             args[i] = input.pop();
         }
-        input.push(calc(args));
+        input.push(calculate(args));
     }
 
-    abstract public BigInteger calc(BigInteger... args);
+    abstract public BigInteger calculate(BigInteger... args);
 }

@@ -17,24 +17,24 @@ import static org.birpn.BIRPN.FALSE;
 public class IsSquare extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        if(args[0].compareTo(BigInteger.ZERO) < 0) {
+    public BigInteger calc(BigInteger x) {
+        if(x.compareTo(BigInteger.ZERO) < 0) {
             return FALSE;
         }
-        int i = args[0].mod(BigInteger.valueOf(3)).intValue();
+        int i = x.mod(BigInteger.valueOf(3)).intValue();
         if(i == 2) {
             return FALSE;
         }
-        i = args[0].mod(BigInteger.valueOf(16)).intValue();
+        i = x.mod(BigInteger.valueOf(16)).intValue();
         if(i != 0 && i != 1 && i != 4 && i != 9) {
             return FALSE;
         }
-        i = args[0].mod(BigInteger.valueOf(5)).intValue();
+        i = x.mod(BigInteger.valueOf(5)).intValue();
         if(i != 0 && i != 1 && i != 4) {
             return FALSE;
         }
-        BigInteger isqrt = Isqrt.bigintroot(args[0]);
-        return fromBool(isqrt.pow(2).equals(args[0]));
+        BigInteger isqrt = Isqrt.bigintroot(x);
+        return fromBool(isqrt.pow(2).equals(x));
     }
 
     @Override

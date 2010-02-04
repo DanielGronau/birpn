@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class LowestBit extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return BigInteger.valueOf(args[0].getLowestSetBit());
+    public BigInteger calc(BigInteger x) {
+        return BigInteger.valueOf(x.getLowestSetBit());
     }
 
     @Override public String toString() {

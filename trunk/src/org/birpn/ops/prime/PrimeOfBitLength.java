@@ -17,8 +17,8 @@ public class PrimeOfBitLength extends Function1 {
    private final Random random = new Random();
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return BigInteger.probablePrime(args[0].intValue(), random);
+    public BigInteger calc(BigInteger x) {
+        return BigInteger.probablePrime(x.intValue(), random);
     }
 
     @Override public String toString() {

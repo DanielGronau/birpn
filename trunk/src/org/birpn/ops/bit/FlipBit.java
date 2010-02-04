@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class FlipBit extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].flipBit(args[0].intValue());
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.flipBit(y.intValue());
     }
 
     @Override public String toString() {

@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class ClearBit extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].clearBit(args[0].intValue());
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.clearBit(y.intValue());
     }
 
     @Override public String toString() {

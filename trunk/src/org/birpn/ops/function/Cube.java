@@ -15,10 +15,10 @@ import java.math.BigInteger;
 public class Cube extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[0].pow(3);
+    public BigInteger calc(BigInteger x) {
+        return x.pow(3);
     }
     @Override public String toString() {
-        return "³";
+        return "\u00b3";
     }
 }

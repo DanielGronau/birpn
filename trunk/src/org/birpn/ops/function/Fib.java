@@ -39,8 +39,8 @@ public class Fib extends Function1 {
     }
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return fib(args[0]);
+    public BigInteger calc(BigInteger x) {
+        return fib(x);
     }
 
     @Override

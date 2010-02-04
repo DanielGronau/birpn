@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Negate extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-       return args[0].negate();
+    public BigInteger calc(BigInteger x) {
+       return x.negate();
     }
     @Override public String toString() {
         return "negate";

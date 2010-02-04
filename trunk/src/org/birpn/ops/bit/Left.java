@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Left extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].shiftLeft(args[0].intValue());
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.shiftLeft(y.intValue());
     }
     @Override public String toString() {
         return "<<";

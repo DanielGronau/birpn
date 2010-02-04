@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Times extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger ... args) {
-        return args[0].multiply(args[1]);
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.multiply(y);
     }
     @Override public String toString() {
         return "*";

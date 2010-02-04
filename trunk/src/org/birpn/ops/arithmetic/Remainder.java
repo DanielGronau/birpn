@@ -14,8 +14,8 @@ import java.math.BigInteger;
 public class Remainder extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].remainder(args[0]);
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.remainder(y);
     }
 
     @Override

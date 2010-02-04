@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class ModPow extends Function3 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[2].modPow(args[1], args[0]);
+    public BigInteger calc(BigInteger x, BigInteger y, BigInteger z) {
+        return x.modPow(y, z);
     }
     @Override public String toString() {
         return "^%";

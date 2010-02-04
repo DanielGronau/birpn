@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Gcd extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].gcd(args[0]);
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.gcd(y);
     }
 
     @Override public String toString() {

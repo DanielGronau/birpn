@@ -43,11 +43,11 @@ public class Isqrt extends Function1 {
  }
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        if(args[0].compareTo(BigInteger.ZERO) < 0) {
+    public BigInteger calc(BigInteger x) {
+        if(x.compareTo(BigInteger.ZERO) < 0) {
             throw new ArithmeticException("Square root from negative number");
         }
-        return bigintroot(args[0]);
+        return bigintroot(x);
     }
 
     @Override

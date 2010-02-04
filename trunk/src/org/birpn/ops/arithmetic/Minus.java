@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Minus extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger ...  args) {
-        return args[1].subtract(args[0]);
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.subtract(y);
     }
     @Override public String toString() {
         return "-";
