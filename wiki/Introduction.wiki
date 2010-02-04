@@ -40,7 +40,7 @@ In Parsed Style you can use hexadeximal numbers (starting with 0x) or binary num
 
 It is possible to substitute not only numbers but operators, too. The following example prints the results of 33+17, 33-17, 33*17, 33/17:
 {{{
-BigInteger[] ops = { PLUS, MINUS, TIMES, DIV };
+Number[] ops = { PLUS, MINUS, TIMES, DIV };
 for(BigInteger op : ops) {
   System.out.println(_("33 17 $0", op));
 }
