@@ -15,10 +15,10 @@ import java.math.BigInteger;
 public class Not extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return (testForBooleans(args))
-                ? fromBool(! toBool(args[0]))
-                : args[0].not();
+    public BigInteger calc(BigInteger x) {
+        return (testForBooleans(x))
+                ? fromBool(! toBool(x))
+                : x.not();
     }
     @Override public String toString() {
         return "~";

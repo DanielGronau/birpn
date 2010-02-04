@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Abs extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[0].abs();
+    public BigInteger calc(BigInteger x) {
+        return x.abs();
     }
 
     @Override public String toString() {

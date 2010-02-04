@@ -15,10 +15,10 @@ import java.math.BigInteger;
 public class Xor extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return (testForBooleans(args))
-                ? fromBool(toBool(args[1]) ^ toBool(args[0]))
-                : args[1].xor(args[0]);
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return (testForBooleans(x, y))
+                ? fromBool(toBool(x) ^ toBool(y))
+                : x.xor(y);
     }
     @Override public String toString() {
         return "xor";

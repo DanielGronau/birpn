@@ -17,8 +17,8 @@ import java.math.BigInteger;
  */
 public class If extends Function3 {
 
-  public BigInteger calc(BigInteger... args) {
-    return toBool(args[2]) ? args[1] : args [0];
+  public BigInteger calc(BigInteger x, BigInteger y, BigInteger z) {
+    return toBool(x) ? y : z;
   }
 
   @Override public String toString() {

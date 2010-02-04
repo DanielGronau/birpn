@@ -14,8 +14,8 @@ import java.math.BigInteger;
  */
 public class BitCount extends Function1 {
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return BigInteger.valueOf(args[0].bitCount());
+    public BigInteger calc(BigInteger x) {
+        return BigInteger.valueOf(x.bitCount());
     }
     @Override public String toString() {
         return "bitCount";

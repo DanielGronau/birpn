@@ -16,8 +16,8 @@ import static org.birpn.BIRPN.*;
 public class Ne extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].equals(args[0]) ? FALSE : TRUE;
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.equals(y) ? FALSE : TRUE;
     }
 
     @Override public String toString() {

@@ -68,8 +68,8 @@ public class Factorial extends Function1 {
         2835, 14175, 155925, 467775, 6081075, 42567525, 638512875, 638512875};
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return factorial(args[0].intValue());
+    public BigInteger calc(BigInteger x) {
+        return factorial(x.intValue());
     }
 
     @Override

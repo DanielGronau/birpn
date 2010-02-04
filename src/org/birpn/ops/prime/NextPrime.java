@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class NextPrime extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[0].nextProbablePrime();
+    public BigInteger calc(BigInteger x) {
+        return x.nextProbablePrime();
     }
     @Override public String toString() {
         return "nextPrime";

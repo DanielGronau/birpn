@@ -14,8 +14,8 @@ import java.math.BigInteger;
  */
 public class Dec extends Function1 {
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[0].subtract(BigInteger.ONE);
+    public BigInteger calc(BigInteger x) {
+        return x.subtract(BigInteger.ONE);
     }
 
     @Override public String toString() {

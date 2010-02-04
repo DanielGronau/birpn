@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class BitLength extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return BigInteger.valueOf(args[0].bitLength());
+    public BigInteger calc(BigInteger x) {
+        return BigInteger.valueOf(x.bitLength());
     }
     @Override public String toString() {
         return "bitLength";

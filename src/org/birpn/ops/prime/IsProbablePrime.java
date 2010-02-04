@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class IsProbablePrime extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return fromBool(args[1].isProbablePrime(args[0].intValue()));
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return fromBool(x.isProbablePrime(y.intValue()));
     }
 
     @Override public String toString() {

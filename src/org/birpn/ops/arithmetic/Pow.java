@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Pow extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].pow(args[0].intValue());
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.pow(y.intValue());
     }
     @Override public String toString() {
         return "^";

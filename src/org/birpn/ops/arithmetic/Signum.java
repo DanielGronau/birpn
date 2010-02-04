@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class Signum extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return BigInteger.valueOf(args[0].signum());
+    public BigInteger calc(BigInteger x) {
+        return BigInteger.valueOf(x.signum());
     }
 
     @Override public String toString() {

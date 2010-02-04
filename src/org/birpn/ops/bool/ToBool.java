@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public class ToBool extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return fromBool(! args[0].equals(BigInteger.ZERO));
+    public BigInteger calc(BigInteger x) {
+        return fromBool(! x.equals(BigInteger.ZERO));
     }
 
     @Override public String toString() {

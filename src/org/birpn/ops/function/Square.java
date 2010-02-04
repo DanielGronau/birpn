@@ -15,10 +15,10 @@ import java.math.BigInteger;
 public class Square extends Function1 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[0].pow(2);
+    public BigInteger calc(BigInteger x) {
+        return x.pow(2);
     }
     @Override public String toString() {
-        return "²";
+        return "\u00b2";
     }
 }
