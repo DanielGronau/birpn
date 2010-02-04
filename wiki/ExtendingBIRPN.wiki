@@ -4,23 +4,21 @@
 
 While the basic class for an operation is Op, most of the operations in BIRPN are actually functions, which means that they remove their operands from the stack and put *one* `BigInteger` back to the stack. In this case you should use one of the function classes as your base class.
 
-Consider you want to write a function for the least common denominator. You can calculate it by the formula lcd(a,b) = a*b/gcd(a,b). It needs two arguments, so you can extend Function2. Note that you get the arguments in reverse order, so `args[0]` is the last argument, `args[1]` is the second to last one etc. 
-
+Consider you want to write a function for the least common denominator. You can calculate it by the formula lcd(a,b) = a*b/gcd(a,b). It needs two arguments, so you can extend Function2.
 You must just provide the calc- and the toString-Method. Here is a possible implementation:
 
 {{{
 package mypackage;
 
-//Some classes moved in the current sources,
-//so in BIRPN0.2.jar, you must use import org.birpn.ops.Function2; instead
+//This works for the SVN trunk, but is not compatible to BIRPN-0.2.jar
 import org.birpn.Function2; 
 import java.math.BigInteger;
 
 public class Lcd extends Function2 {
 
     @Override
-    public BigInteger calc(BigInteger... args) {
-        return args[1].multiply(args[0]).divide(args[1].gcd(args[0]));
+    public BigInteger calc(BigInteger x, BigInteger y) {
+        return x.multiply(y).divide(x.gcd(y));
     }
 
     @Override public String toString() {
