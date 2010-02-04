@@ -65,7 +65,7 @@ The String representations are *not* case sensistive.
 
 || *BIRPN Meta Function* || *String Representation* || *Description* ||
 || applyLeft(op) || applyLeft:op || `[1,2,3,9] --> [9 op 1, 9 op 2, 9 op 3]` ||
-|| applyRight(op) || applyrRght:op || `[1,2,3,9] --> [1 op 9, 2 op 9, 3 op 9]` ||
+|| applyRight(op) || applyRight:op || `[1,2,3,9] --> [1 op 9, 2 op 9, 3 op 9]` ||
 || filter(cond) || filter:cond || keep only elements fulfilling the condition ||
 || filterNot(cond) || filterNot:cond || keep only elements *not* fulfilling the condition ||
 || fold(op) || fold:op || `[1,2,3,4] --> [1 op (2 op (3 op 4))]` ||
