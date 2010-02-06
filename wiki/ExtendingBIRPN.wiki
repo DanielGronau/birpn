@@ -10,7 +10,6 @@ You must just provide the calc- and the toString-Method. Here is a possible impl
 {{{
 package mypackage;
 
-//This works for the SVN trunk, but is not compatible to BIRPN-0.2.jar
 import org.birpn.Function2; 
 import java.math.BigInteger;
 
@@ -23,6 +22,30 @@ public class Lcd extends Function2 {
 
     @Override public String toString() {
         return "lcd";
+    }
+}
+}}}
+
+= Extending Op =
+
+If your operation doesn't fit in the usual function scheme, you can extends Op directly. E.g. if you want to write an operation that rotates the first three stack entries (so that the third entry gets the first one), you could write:
+
+{{{
+import org.birpn.Op;
+import java.math.BigInteger;
+import java.util.Stack;
+
+public class Rot extends Op {
+    public void eval(Stack<BigInteger> input) {
+        BigInteger a = input.pop();
+        BigInteger b = input.pop();
+        BigInteger c = input.pop();
+        input.push(b);
+        input.push(a);
+        input.push(c);
+    }
+    @Override public String toString() {
+        return "rot";
     }
 }
 }}}
