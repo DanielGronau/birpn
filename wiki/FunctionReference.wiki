@@ -51,9 +51,12 @@ The String representations are *not* case sensistive.
 || RANGE || `..` || -none- || range with step 1 or -1 ||
 || RANGEBY || `...` || -none- || range with given step ||
 || REMAINDER || remainder || remainder(n) || remainder of integer division ||
+|| REVERSE || reverse || -none- || reverses the stack ||
 || RIGHT || `>>` || shiftRight(k) || shift bits right by k positions ||
 || SETBIT || setBit || setBit(k) || set the k-th bit ||
+|| SHUFFLE || shuffle || -none- || shuffles the elements of the stack ||
 || SIGNUM || signum || signum() || 1,0,-1 for positive, zero, negative number ||
+|| SORT || sort || -none- || sorts all elements of the stack ||
 || SQUARE || `²` || pow(2) || calculates the square ||
 || SWAP || swap || -none- || swaps the top an second stack entry ||
 || TESTBIT || testBit || testBit(k) || tests if k-th bit is set ||
