@@ -1,7 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* This file is part of BIRPN.
+ *
+ * BIRPN is free software: you can redistribute it and/or modify
+ * it under the terms of the Lesser GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * BIRPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * Lesser GNU General Public License for more details.
+ *
+ * You should have received a copy of the Lesser GNU General Public
+ * License along with BIRPN.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.birpn;
 
 import java.math.BigDecimal;
@@ -72,12 +84,16 @@ import org.birpn.meta.Fold;
 import org.birpn.meta.ForEach;
 import org.birpn.ops.function.IsSquare;
 import org.birpn.ops.function.Isqrt;
-import org.birpn.ops.range.Range;
-import org.birpn.ops.range.RangeBy;
+import org.birpn.ops.stack.Range;
+import org.birpn.ops.stack.RangeBy;
+import org.birpn.ops.stack.Reverse;
+import org.birpn.ops.stack.Shuffle;
+import org.birpn.ops.stack.Sort;
 
 /**
  *
- * @author Gronau
+ * @author Daniel Gronau
+ * @version 1.0
  */
 public class BIRPN {
 
@@ -130,18 +146,20 @@ public class BIRPN {
     public static final Op RANGEBY = new RangeBy();
     public static final Op REMAINDER = new Remainder();
     public static final Op RIGHT = new Right();
+    public static final Op REVERSE = new Reverse();
     public static final Op SETBIT = new SetBit();
+    public static final Op SHUFFLE = new Shuffle();
     public static final Op SIGNUM = new Signum();
+    public static final Op SORT = new Sort();
     public static final Op SQUARE = new Square();
     public static final Op SWAP = new Swap();
     public static final Op TESTBIT = new TestBit();
     public static final Op TIMES = new Times();
     public static final Op TOBOOL = new ToBool();
     public static final Op XOR = new Xor();
-    private static final Map<String, Op> opNames =
-            new HashMap<String, Op>();
-    private static final Map<String, Meta> metaNames =
-            new HashMap<String, Meta>();
+
+    private static final Map<String, Op> opNames = new HashMap<String, Op>();
+    private static final Map<String, Meta> metaNames = new HashMap<String, Meta>();
 
     static {
         registerOps(ABS, AND, ANDNOT, BITCOUNT, BITLENGTH, CLEARBIT, CUBE, DEC,
@@ -149,8 +167,8 @@ public class BIRPN {
                 GCD, GT, IF, INC, ISPRIME, ISPROBABLEPRIME, ISQRT, ISSQUARE, LE,
                 LEFT, LT, LOWESTBIT, MAX, MIN, MINUS, MOD, MODINVERSE, MODPOW,
                 NE, NEGATE, NEXTPRIME, NOT, OR, PLUS, POW, PRIMEOFBITLENGTH,
-                RANGE, RANGEBY, REMAINDER, RIGHT, SETBIT, SIGNUM, SQUARE,
-                SWAP, TESTBIT, TIMES, TOBOOL, XOR);
+                RANGE, RANGEBY, REMAINDER, REVERSE, RIGHT, SETBIT, SHUFFLE,
+                SIGNUM, SORT, SQUARE, SWAP, TESTBIT, TIMES, TOBOOL, XOR);
         registerMetas(ApplyLeft.meta(), ApplyRight.meta(), Filter.meta(),
                 FilterNot.meta(), Fold.meta(), ForEach.meta());
     }

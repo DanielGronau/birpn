@@ -14,25 +14,27 @@
  * License along with BIRPN.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.birpn.ops.comparision;
+package org.birpn.ops.stack;
 
-import org.birpn.Function2;
+import org.birpn.Op;
 import java.math.BigInteger;
-import static org.birpn.BIRPN.*;
+import java.util.Stack;
 
 /**
+ * Shuffles the content of the stack.
  *
  * @author Daniel Gronau
  * @version 1.0
  */
-public class Gt extends Function2 {
+public class Shuffle extends Op {
 
     @Override
-    public BigInteger calc(BigInteger x, BigInteger y) {
-        return x.compareTo(y) > 0 ? TRUE : FALSE;
+    public void eval(Stack<BigInteger> input) {
+        java.util.Collections.shuffle(input);
     }
 
-    @Override public String toString() {
-        return ">";
+    @Override
+    public String toString() {
+        return "shuffle";
     }
 }
