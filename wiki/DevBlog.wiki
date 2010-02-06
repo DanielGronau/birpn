@@ -1,5 +1,10 @@
 #summary Development Blog
 
+= 2010-02-06 =
+
+The new release is there: BIRPN 0.3
+I added three functions that work on the whole stack (sort, reverse, shuffle). Then I added another example (Ackermann function) and the `JUnit` test for meta function (`MetaTest`).
+
 = 2010-02-04 =
 
 I changed the Function1,2,3 interfaces to be more readable, `OperatorTest` is now backward compatible to `JUnit3`, and I changed the representation for square and cube to the corresponding Unicode escape sequences (as I had some checkin problems because of that). Hmmm, seems to be time for a new release.
