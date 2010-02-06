@@ -1,6 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* This file is part of BIRPN.
+ *
+ * BIRPN is free software: you can redistribute it and/or modify
+ * it under the terms of the Lesser GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * BIRPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * Lesser GNU General Public License for more details.
+ *
+ * You should have received a copy of the Lesser GNU General Public
+ * License along with BIRPN.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.birpn.ops.function;
@@ -8,12 +19,16 @@ package org.birpn.ops.function;
 import org.birpn.Function1;
 import java.math.BigInteger;
 
+/**
+ * This class contains code based on
+ * http://lists.apple.com/archives/Java-dev/2004/Dec/msg00302.html
+ * (where it is stated that is originates in the mersenne-prime forum)
+ *
+ * @author Daniel Gronau
+ * @version 1.0
+ */
 public class Isqrt extends Function1 {
 
- /* Code taken from
-  * http://lists.apple.com/archives/Java-dev/2004/Dec/msg00302.html
-  * (where it is stated that is originates in the mersenne-prime forum)
-  */
  static BigInteger bigintroot(BigInteger n) {
   int currBit = n.bitLength() / 2;
 
