@@ -43,7 +43,7 @@ The calculation of the Mersenne prime candidate is written best using the String
 
 Next we need to test if the Mersenne prime candidate is indeed prime. This is similar to our first test: `is(prime, ISPRIME)`
 
-Now the remaining change is the multiplication of prime with 2^n-1^, which can be written as: `_(2, n-1, POW, prime, TIMES)` The first three entries calculate the factor 2^n-1^, then we add prime to the stack and multiply both values. The String version would be: `_("2 $0 ^ $1 *",n-1, prime)`, but it is less readable in this case.
+Now the remaining calculation is the multiplication of prime with 2^n-1^, which can be written as: `_(2, n-1, POW, prime, TIMES)`. The first three entries calculate the factor 2^n-1^, then we add ´prime` to the stack and multiply both values. The String version would be: `_("2 $0 ^ $1 *", n-1, prime)`, but it is less readable in this case.
 
 Here is the complete refactored application:
 
