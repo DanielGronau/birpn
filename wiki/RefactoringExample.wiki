@@ -54,11 +54,12 @@ import static org.birpn.BIRPN.*;
 public class PerfectNumber {
 
     public static BigInteger perfectNumber(int n) {
+        //if n is not prime, 2^n - 1 isn't either 
         if (is(n, ISPRIME, NOT)) {
             return null;
         }
+        //calculates a Mersenne prime candidate
         BigInteger prime = _("2 $0 ^ 1 -", n);
-        System.out.println(n + " " + prime);
         return is(prime, ISPRIME)
                 ? _(2, n-1, POW, prime, TIMES)
                 : null;
@@ -75,4 +76,4 @@ public class PerfectNumber {
 }
 }}}
 
-I hope you agree that it is much more readable (once you got used to the Reversed Polish Notation).
+I hope you agree that it is more readable (once you got used to the Reversed Polish Notation).
