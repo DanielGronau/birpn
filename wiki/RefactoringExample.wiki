@@ -76,4 +76,4 @@ public class PerfectNumber {
 }
 }}}
 
-I hope you agree that it is more readable (once you got used to the Reversed Polish Notation).
+I hope you agree that the application is more readable now (once you got used to the Reversed Polish Notation).
