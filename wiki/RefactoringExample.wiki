@@ -2,7 +2,7 @@
 
 = The original application =
 
-Here is a little application calculating perfect numbers. Basically we check for a given n if 2^n^-1 is prime (then it is a Mersenne prime), and if this is the case, we return 2^n-1^*(2^n^-1) as a perfect number. For details of the algorithm see [http://en.wikipedia.org/wiki/Perfect_number].
+Here is a little application calculating perfect numbers. Basically we check for a given n if 2^n^-1 is prime (then it is a Mersenne prime), and if this is the case, we return 2^n-1^ (2^n^-1) as a perfect number. For details of the algorithm see [http://en.wikipedia.org/wiki/Perfect_number].
 
 {{{
 import java.math.BigInteger;
