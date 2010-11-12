@@ -1,5 +1,9 @@
 #summary Development Blog
 
+= 2010-11-12 =
+
+As I had to implement a shunting yard based parser for another project, I'm thinking about ways to integrate or adapt this code. If I can find a suitable design, you would have the possibility to use "normal" (infix) notation in BIRPN.
+
 = 2010-02-06 =
 
 The new release is there: BIRPN 0.3
